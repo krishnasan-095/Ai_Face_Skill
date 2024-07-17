@@ -1,0 +1,27 @@
+.step1 button {
+    width: 200px;
+    padding: 3px;
+}
+
+.bottom {
+    flex-wrap: wrap !important;
+}
+
+.bottom button {
+    width: auto !important;
+    padding: 8px !important;
+}
+
+.grey {
+    background-color: #d5d5d526 !important;
+}
+
+@media screen and (max-width:600px) {
+    .step1 {
+        flex-direction: column !important;
+    }
+    .step1 button {
+        width: 100%;
+        padding: 3px;
+    }
+}

@@ -11,11 +11,16 @@ export class ServiceService {
 
   // private UserbaseUrl = 'http://192.168.1.3:8081/creedlogistics/employee';
   // private AdminbaseUrl = 'http://192.168.1.3:8081/creedlogistics';
-  private baseUrl="http://192.168.29.216:5000";
+  private AibaseUrl = "http://192.168.29.216:5000";
+  private baseUrl = "http://192.168.29.223:8080/api";
   constructor(private http: HttpClient) { }
 
   imageUpload(data: any) {
-    return this.http.post(this.baseUrl + '/post_video', data);
+    return this.http.post(this.AibaseUrl + '/post_video', data);
+  }
+
+  postVideo(data: any) {
+    return this.http.post(this.baseUrl + '/ProCommunication/postvideo', data);
   }
 
 }

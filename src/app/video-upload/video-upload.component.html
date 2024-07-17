@@ -70,153 +70,259 @@
                             </div>
                             <!-- End Left sidebar -->
 
-                            <div class="page-aside-right">
-                                <div class="mt-30" *ngIf="pathUrl=='Record'">
-                                    <h5 class="fs-18 text-center">Record Video</h5>
 
-                                    <hr/>
-                                    <div>
-                                        <!-- <div class="form-group">
+
+                            <div class="page-aside-right">
+
+                                <div class="tab-content">
+                                    <div class="tab-pane show active" id="bordered-justified-tabs-preview">
+                                        <ul class="nav nav-tabs nav-justified nav-bordered mb-3">
+                                            <li class="nav-item" (click)="tab(1)">
+                                                <a href="#home-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link" [class.active]="selectedTab==1">
+                                                    <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                                                    <span class="d-none d-md-block">Step 1</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item" (click)="tab(2)">
+                                                <a href="#profile-b2" data-bs-toggle="tab" aria-expanded="true" class="nav-link" [class.active]="selectedTab==2">
+                                                    <i class="mdi mdi-account-circle d-md-none d-block"></i>
+                                                    <span class="d-none d-md-block">Step 2</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item" (click)="tab(3)">
+                                                <a href="#settings-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link" [class.active]="selectedTab==3">
+                                                    <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                                                    <span class="d-none d-md-block">Step 3</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="mt-30" *ngIf="selectedTab==1">
+                                            <h5 class="fs-18 text-center d-flex align-items-center justify-content-center"><span style="border: 1px solid white;
+                                                padding: 6px 10px;
+                                                border-radius: 50%;
+                                                font-size: 10px;">1</span>&nbsp;&nbsp;Describe your video</h5><br>
+
+
+                                            <div class="col-xl-6 col-12 d-flex align-items-center justify-content-center" style="width: 100%;">
+                                                <div class="box">
+                                                    <div class="box-body">
+                                                        <div class="clearfix d-flex align-items-center justify-content-center step1" style="gap: 15px;">
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5">Choose Type</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5">Upload</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5">Generate</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><br>
+
+
+                                            <h5 class="fs-18 text-center d-flex align-items-center justify-content-center"><span style="border: 1px solid white;
+                                                padding: 6px 10px;
+                                                border-radius: 50%;
+                                                font-size: 10px;">2</span>&nbsp;&nbsp;What type of video are you uploading ?</h5><br>
+
+                                            <div class="box-body">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div class="d-flex align-items-center justify-content-center flex-wrap" style="width: 100%;">
+                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column">
+                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQphO1iGa3a8wJpd43zAbREvXa8q4DmAIKww&s" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                            <span class="text-fade">Interview</span>
+                                                        </div>
+                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column">
+                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQphO1iGa3a8wJpd43zAbREvXa8q4DmAIKww&s" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                            <span class="text-fade">Presentation</span>
+                                                        </div>
+                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column">
+                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQphO1iGa3a8wJpd43zAbREvXa8q4DmAIKww&s" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                            <span class="text-fade">Elevator Speech</span>
+                                                        </div>
+                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column">
+                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQphO1iGa3a8wJpd43zAbREvXa8q4DmAIKww&s" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                            <span class="text-fade">Public Speaking</span>
+                                                        </div>
+                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column">
+                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQphO1iGa3a8wJpd43zAbREvXa8q4DmAIKww&s" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                            <span class="text-fade">Important Meeting</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><br>
+
+
+
+                                            <h5 class="fs-18 text-center d-flex align-items-center justify-content-center"><span style="border: 1px solid white;
+                                                padding: 6px 10px;
+                                                border-radius: 50%;
+                                                font-size: 10px;">3</span>&nbsp;&nbsp;What are your visible body area ?</h5><br>
+
+
+                                            <div class="col-xl-6 col-12 d-flex align-items-center justify-content-center" style="width: 100%;">
+                                                <div class="box">
+                                                    <div class="box-body">
+                                                        <div class="clearfix d-flex align-items-center justify-content-center step1 bottom" style="gap: 15px;">
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey">Only hands are visible</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey">Both Legs & Hands are visible</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey">Legs & Hands both are not visible</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey">Only voice is audiable</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><br>
+
+
+
+                                        </div>
+
+                                        <div class="mt-30" id="home-b2" *ngIf="selectedTab==2">
+                                            <h5 class="fs-18 text-center">Record Video</h5>
+
+                                            <hr/>
+                                            <div>
+                                                <!-- <div class="form-group">
                                             <input class="form-control" placeholder="To:">
                                         </div>
                                         <div class="form-group">
                                             <input class="form-control" placeholder="Subject:">
                                         </div> -->
-                                        <div class="form-group" style="
+                                                <div class="form-group" style="
                                         justify-content: center;
                                         align-items: center;
                                         align-content: center;
                                         display: flex;
                                     ">
-                                            <ul class="wysihtml5-toolbar" style="">
-                                                <li>
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on" (click)="onStartRecording()">Start Recording</a>
-                                                        <!-- <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">.MP4, .MOV, WEBM</a> -->
-                                                        <!-- <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a> -->
+                                                    <ul class="wysihtml5-toolbar" style="">
+                                                        <li>
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on" (click)="onStartRecording()">Start Recording</a>
+                                                                <!-- <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">.MP4, .MOV, WEBM</a> -->
+                                                                <!-- <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a> -->
 
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on" (click)="onStopRecording()">Stop Recording</a>
-                                                        <!-- <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">MIN 720PX</a> -->
-                                                        <!-- <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a> -->
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on" (click)="!hasStarted ? null : onStopRecording()">Stop Recording</a>
+                                                                <!-- <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">MIN 720PX</a> -->
+                                                                <!-- <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a> -->
 
-                                                    </div>
-                                                </li>
-                                                <!-- <li>
+                                                            </div>
+                                                        </li>
+                                                        <!-- <li>
                                                     <div class="btn-group">
                                                         <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on">Upload</a>
                                                         <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">500 MP</a>
                                                         <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a>
                                                     </div>
                                                 </li> -->
-                                            </ul>
-                                        </div>
+                                                    </ul>
+                                                </div>
 
-                                        <h1 *ngIf="!isEnd">Record</h1>
-                                        <video #preview controls style="width: 100% !important;" *ngIf="!isEnd"></video>
-                                        <h1 *ngIf="isEnd">Play</h1>
-                                        <p *ngIf="isEnd">file size : {{recordedVideoFile?.size}} Byte</p>
-                                        <video *ngIf='isEnd' #play controls style="width: 100% !important;" src="{{recordedVideoBase64}}"></video>
+                                                <h1 *ngIf="!isEnd">Record</h1>
+                                                <video #preview controls style="width: 100% !important;" *ngIf="!isEnd"></video>
+                                                <h1 *ngIf="isEnd">Play</h1>
+                                                <p *ngIf="isEnd">file size : {{recordedVideoFile?.size}} Byte</p>
+                                                <video *ngIf='isEnd' #play controls style="width: 100% !important;" src="{{recordedVideoBase64}}"></video>
 
-                                    </div>
+                                            </div>
 
-                                    <div class="mt-30" style="
+                                            <div class="mt-30" style="
                                     display: flex;
                                     align-items: center;
                                     justify-content: space-between;
                                 ">
-                                        <button type="button" class="btn btn-danger" (click)="TrashRecordedVideo()"><i class="fa fa-trash"></i> Trash</button>
-                                        <!-- <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button> -->
-                                        <button type="submit" class="btn btn-success" (click)="onUpload('video')"><i class="fa fa-envelope-o"></i> Send</button>
-                                    </div>
-                                </div>
+                                                <button type="button" class="btn btn-danger" (click)="TrashRecordedVideo()"><i class="fa fa-trash"></i> Trash</button>
+                                                <!-- <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button> -->
+                                                <button type="submit" class="btn btn-success" (click)="onUpload('video')"><i class="fa fa-envelope-o"></i> Send</button>
+                                            </div>
+                                        </div>
 
-                                <div class="mt-30" *ngIf="pathUrl=='Upload'">
-                                    <h5 class="fs-18 text-center">Upload Video</h5>
+                                        <div class="mt-30" id="profile-b2" *ngIf="selectedTab==2">
+                                            <h5 class="fs-18 text-center">Upload Video</h5>
 
-                                    <hr/>
-                                    <div>
-                                        <!-- <div class="form-group">
+                                            <hr/>
+                                            <div>
+                                                <!-- <div class="form-group">
                                             <input class="form-control" placeholder="To:">
                                         </div>
                                         <div class="form-group">
                                             <input class="form-control" placeholder="Subject:">
                                         </div> -->
-                                        <div class="form-group" style="
+                                                <div class="form-group" style="
                                         justify-content: center;
                                         align-items: center;
                                         align-content: center;
                                         display: flex;
                                     ">
-                                            <ul class="wysihtml5-toolbar" style="">
-                                                <li>
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on">FORMAT</a>
-                                                        <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">.MP4, .MOV, WEBM</a>
-                                                        <!-- <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a> -->
+                                                    <ul class="wysihtml5-toolbar" style="">
+                                                        <li>
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on">FORMAT</a>
+                                                                <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">.MP4, .MOV, WEBM</a>
+                                                                <!-- <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a> -->
 
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on">RESOLUTION</a>
-                                                        <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">MIN 720PX</a>
-                                                        <!-- <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a> -->
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on">RESOLUTION</a>
+                                                                <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">MIN 720PX</a>
+                                                                <!-- <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a> -->
 
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on">FILE SIZE</a>
-                                                        <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">500 MB</a>
-                                                        <!-- <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a> -->
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on">FILE SIZE</a>
+                                                                <a class="btn btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">500 MB</a>
+                                                                <!-- <a class="btn btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a> -->
 
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="form-group">
-                                            <div id="compose-textarea" class="form-control" style="
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div id="compose-textarea" class="form-control" style="
                                             display: flex;
                                             align-items: center;
                                             justify-content: center;
                                         ">
-                                                <video id="video" width="300" height="300" [src]="url" *ngIf="format==='video' && url" height="200" controls style="width: 100%;
+                                                        <video id="video" width="300" height="300" [src]="url" *ngIf="format==='video' && url" height="200" controls style="width: 100%;
     height: 550px;"></video>
-                                            </div>
-                                            <div id="compose-textarea" class="form-control">
-                                                <!-- <input id="file-input" type="file" accept="video/*"> -->
-                                                <style>
-                                                    .input-file {
-                                                        visibility: hidden;
-                                                        position: absolute;
-                                                    }
-                                                </style>
-                                                <div class="">
-                                                    <input type="file" name="img[]" class="input-file">
-                                                    <div class="input-group col-xs-12">
-                                                        <span class="input-group-addon"><i class="fa fa-video-camera"></i></span>
-                                                        <input type="text" class="form-control upload-field btn" #fileInput type="file" (change)="onSelectFile($event)">
-                                                        <!-- <span class="input-group-btn">
+                                                    </div>
+                                                    <div id="compose-textarea" class="form-control">
+                                                        <!-- <input id="file-input" type="file" accept="video/*"> -->
+                                                        <style>
+                                                            .input-file {
+                                                                visibility: hidden;
+                                                                position: absolute;
+                                                            }
+                                                        </style>
+                                                        <div class="">
+                                                            <input type="file" name="img[]" class="input-file">
+                                                            <div class="input-group col-xs-12">
+                                                                <span class="input-group-addon"><i class="fa fa-video-camera"></i></span>
+                                                                <input type="text" class="form-control upload-field btn" #fileInput type="file" (change)="onSelectFile($event)">
+                                                                <!-- <span class="input-group-btn">
                                                              <h4></h4>   
                                                          </span> -->
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="mt-30" style="
+                                            <div class="mt-30" style="
                                     display: flex;
                                     align-items: center;
                                     justify-content: space-between;
                                 ">
-                                        <button type="button" class="btn btn-danger" (click)="onDelete()"><i class="fa fa-trash"></i> Trash</button>
-                                        <!-- <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button> -->
-                                        <button type="submit" class="btn btn-success" (click)="onUpload('file')"><i class="fa fa-envelope-o"></i> Send</button>
+                                                <button type="button" class="btn btn-danger" (click)="onDelete()"><i class="fa fa-trash"></i> Trash</button>
+                                                <!-- <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button> -->
+                                                <button type="submit" class="btn btn-success" (click)="onUpload('file')"><i class="fa fa-envelope-o"></i> Send</button>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
 
