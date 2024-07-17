@@ -80,7 +80,7 @@ export class VideoUploadComponent {
         this.format = 'image';
         reader.onload = (event) => {
           this.url = (<FileReader>event.target).result;
-          this.compressImage(this.url, 0.7); 
+          this.compressImage(this.url, 0.7);
         };
       } else if (file.type.indexOf('video') > -1) {
         this.format = 'video';
@@ -118,12 +118,12 @@ export class VideoUploadComponent {
     if (URL && FILE) {
       const Data = {
         "userId": 1,
-        "baseUrl": 'urlToupload',
+        "baseUrl": urlToupload,
         "videoId": 1,
-        "file": 'fileToupload',
-        "videoCategory": null
+        "file": fileToupload,
+        "videoCategory": 'null'
       }
-      this.api.imageUpload(data).subscribe({
+      this.api.imageUpload(Data).subscribe({
         next: (res) => {
           console.log(res);
           alert('Successful')

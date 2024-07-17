@@ -20,13 +20,14 @@
  *    "Font Awesome by Dave Gandy - http://fontawesome.io"
  */
 
-@font-face {
+
+/* @font-face {
     font-family: weathericons;
     src: url(https://edulearn-lms-admin-template.multipurposethemes.com/assets/icons/weather-icons//fonts/weathericons-regular-webfont.eot);
     src: url(..//fonts/weathericons-regular-webfont.eot?#iefix) format('embedded-opentype'), url(..//fonts/weathericons-regular-webfont.woff2) format('woff2'), url(..//fonts/weathericons-regular-webfont.woff) format('woff'), url(..//fonts/weathericons-regular-webfont.ttf) format('truetype'), url(..//fonts/weathericons-regular-webfont.svg#weather_iconsregular) format('svg');
     font-weight: 400;
     font-style: normal
-}
+} */
 
 .wi {
     display: inline-block;
