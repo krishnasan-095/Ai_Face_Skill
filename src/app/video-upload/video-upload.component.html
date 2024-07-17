@@ -36,7 +36,7 @@
                                     <a class="btn btn-danger" (click)="navigate('Record')">Record Video</a>
                                 </div>
                                 <div class="email-menu-list mt-3 nav nav-tabs mb-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                    <a href="#inbox" id="inbox-tab" data-bs-toggle="pill" aria-expanded="false" class="nav-link active show text-danger fw-bold"><i class="fa fa-inbox me-2"></i>Inbox<span class="badge badge-danger-light float-end ms-2">7</span></a>
+                                    <a id="inbox-tab" data-bs-toggle="pill" aria-expanded="false" class="nav-link active show text-danger fw-bold" (click)="menuClicked('dashboard')"><i class="fa fa-inbox me-2"></i>Dashboard<span class="badge badge-danger-light float-end ms-2">7</span></a>
                                     <a href="#starred" id="starred-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link"><i class="fa fa-star me-2"></i>Starred</a>
                                     <a href="#snoozed" id="snoozed-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link"><i class="fa fa-clock-o me-2"></i>Snoozed</a>
                                     <a href="#draft" id="draft-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link"><i class="fa fa-file me-2"></i>Draft<span class="badge badge-info-light float-end ms-2">2</span></a>
@@ -74,8 +74,14 @@
 
                             <div class="page-aside-right">
 
+
+
                                 <div class="tab-content">
-                                    <div class="tab-pane show active" id="bordered-justified-tabs-preview">
+
+                                    <!-- Sections---------------------------Start---------------------------------------------- -->
+
+
+                                    <div class="tab-pane show active" id="bordered-justified-tabs-preview" *ngIf="!dashboard">
                                         <ul class="nav nav-tabs nav-justified nav-bordered mb-3">
                                             <li class="nav-item" (click)="tab(1)">
                                                 <a href="#home-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link" [class.active]="selectedTab==1">
@@ -89,12 +95,12 @@
                                                     <span class="d-none d-md-block">Step 2</span>
                                                 </a>
                                             </li>
-                                            <li class="nav-item" (click)="tab(3)">
+                                            <!-- <li class="nav-item" (click)="tab(3)">
                                                 <a href="#settings-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link" [class.active]="selectedTab==3">
                                                     <i class="mdi mdi-settings-outline d-md-none d-block"></i>
                                                     <span class="d-none d-md-block">Step 3</span>
                                                 </a>
-                                            </li>
+                                            </li> -->
                                         </ul>
 
                                         <div class="mt-30" *ngIf="selectedTab==1">
@@ -108,9 +114,9 @@
                                                 <div class="box">
                                                     <div class="box-body">
                                                         <div class="clearfix d-flex align-items-center justify-content-center step1" style="gap: 15px;">
-                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5">Choose Type</button>
-                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5">Upload</button>
-                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5">Generate</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5" [class.describe]="describe==1" (click)="Describe('Choose Type',1)">Choose Type</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5" [class.describe]="describe==2" (click)="Describe('Upload',2)">Upload</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5" [class.describe]="describe==3" (click)="Describe('Generate',3)">Generate</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -125,24 +131,24 @@
                                             <div class="box-body">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <div class="d-flex align-items-center justify-content-center flex-wrap" style="width: 100%;">
-                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column">
-                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQphO1iGa3a8wJpd43zAbREvXa8q4DmAIKww&s" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column g-14 image" [class.imageSelected]="selectedImg==1" (click)="SelectedImg(1)">
+                                                            <img src="../../assets/images/1.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
                                                             <span class="text-fade">Interview</span>
                                                         </div>
-                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column">
-                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQphO1iGa3a8wJpd43zAbREvXa8q4DmAIKww&s" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column g-14 image" [class.imageSelected]="selectedImg==2" (click)="SelectedImg(2)">
+                                                            <img src="../../assets/images/2.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
                                                             <span class="text-fade">Presentation</span>
                                                         </div>
-                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column">
-                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQphO1iGa3a8wJpd43zAbREvXa8q4DmAIKww&s" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column g-14 image" [class.imageSelected]="selectedImg==3" (click)="SelectedImg(3)">
+                                                            <img src="../../assets/images/3.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
                                                             <span class="text-fade">Elevator Speech</span>
                                                         </div>
-                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column">
-                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQphO1iGa3a8wJpd43zAbREvXa8q4DmAIKww&s" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column g-14 image" [class.imageSelected]="selectedImg==4" (click)="SelectedImg(4)">
+                                                            <img src="../../assets/images/44.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
                                                             <span class="text-fade">Public Speaking</span>
                                                         </div>
-                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column">
-                                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQphO1iGa3a8wJpd43zAbREvXa8q4DmAIKww&s" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                        <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column g-14 image" [class.imageSelected]="selectedImg==5" (click)="SelectedImg(5   )">
+                                                            <img src="../../assets/images/55.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
                                                             <span class="text-fade">Important Meeting</span>
                                                         </div>
                                                     </div>
@@ -161,20 +167,21 @@
                                                 <div class="box">
                                                     <div class="box-body">
                                                         <div class="clearfix d-flex align-items-center justify-content-center step1 bottom" style="gap: 15px;">
-                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey">Only hands are visible</button>
-                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey">Both Legs & Hands are visible</button>
-                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey">Legs & Hands both are not visible</button>
-                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey">Only voice is audiable</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey" [class.visiblearea]="visibleArea==1" (click)="visiblearea('Only hands are visible',1)">Only hands are visible</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey" [class.visiblearea]="visibleArea==2" (click)="visiblearea('Both Legs & Hands are visible',2)">Both Legs & Hands are visible</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey" [class.visiblearea]="visibleArea==3" (click)="visiblearea('Legs & Hands both are not visible',3)">Legs & Hands both are not visible</button>
+                                                            <button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-success-light mb-5 grey" [class.visiblearea]="visibleArea==4" (click)="visiblearea('Only voice is audiable',4)">Only voice is audiable</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div><br>
 
+                                            <button style="float: right;">Next</button>
 
 
                                         </div>
 
-                                        <div class="mt-30" id="home-b2" *ngIf="selectedTab==2">
+                                        <div class="mt-30" id="home-b2" *ngIf="selectedTab==2 && pathUrl=='Record'">
                                             <h5 class="fs-18 text-center">Record Video</h5>
 
                                             <hr/>
@@ -237,7 +244,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="mt-30" id="profile-b2" *ngIf="selectedTab==2">
+                                        <div class="mt-30" id="profile-b2" *ngIf="selectedTab==2 && pathUrl=='Upload'">
                                             <h5 class="fs-18 text-center">Upload Video</h5>
 
                                             <hr/>
@@ -324,6 +331,76 @@
                                         </div>
 
                                     </div>
+
+
+                                    <div class="row" *ngIf="dashboard" style="background-color: #191d33 !important;padding: 10px !important;">
+
+                                        <!-- col -->
+                                        <div class="col-lg-6 p-0">
+                                            <div class="box">
+                                                <div class="box-body">
+                                                    <video src="../../assets/images/sample.mp4" style="width: 100%;
+    height: 100%;"></video>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /col -->
+                                        <!-- col -->
+                                        <div class="col-lg-6">
+                                            <div class="box">
+                                                <div class="box-body">
+                                                    <h4 class="box-title">Angle offset</h4>
+                                                    <div class="text-center">
+                                                        <input class="knob" data-width="250" data-height="250" data-angleOffset="85" data-linecap="round" data-fgColor="#0bb2d4" value="85" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /col -->
+                                        <!-- col -->
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="box">
+                                                <div class="box-body">
+                                                    <h4 class="box-title">5-digit values, step 1000</h4>
+                                                    <div class="text-center">
+                                                        <input class="knob" data-width="150" data-height="150" data-min="-15000" data-displayPrevious="true" data-max="15000" data-step="1000" value="11000" data-fgColor="#17b3a3" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /col -->
+                                        <!-- col -->
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="box">
+                                                <div class="box-body">
+                                                    <h4 class="box-title">Readonly</h4>
+                                                    <div class="text-center">
+                                                        <input class="knob" data-width="150" data-height="150" data-linecap="round" data-fgColor="#3e8ef7" value="50" data-skin="tron" data-angleOffset="180" data-readOnly="true" data-thickness=".1" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /col -->
+                                        <!-- col -->
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="box">
+                                                <div class="box-body">
+                                                    <h4 class="box-title">Angle offset and arc</h4>
+                                                    <div class="text-center">
+                                                        <input class="knob" data-width="150" data-height="150" data-displayPrevious="true" data-fgColor="#ff4c52" data-skin="tron" data-cursor="true" value="65" data-thickness=".2" data-angleOffset="-125" data-angleArc="250" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /col -->
+                                    </div>
+
+
+
+                                    <!-- Sections---------------------------Start---------------------------------------------- -->
+
+
+
                                 </div>
 
                                 <!-- end .mt-4 -->

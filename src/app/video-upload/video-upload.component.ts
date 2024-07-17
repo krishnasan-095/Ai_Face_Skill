@@ -4,7 +4,6 @@ import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 
-
 declare var MediaRecorder: any;
 
 @Component({
@@ -20,7 +19,8 @@ export class VideoUploadComponent {
   format!: string;
   file!: File | any;
   pathUrl: any;
-
+  describe: any;
+  visibleArea: any;
 
   videoMimeTypes: string[] = [
     'video/webm',
@@ -42,6 +42,8 @@ export class VideoUploadComponent {
   recordedVideoBase64: string = '';
   fileName: any;
   selectedTab: any;
+  dashboard: boolean = false;
+  selectedImg: any;
 
   @ViewChild('preview') previewVideo: ElementRef | any;
   @ViewChild('play') playVideo: ElementRef | any;
@@ -61,6 +63,10 @@ export class VideoUploadComponent {
     this.hasStarted = false;
   }
 
+  menuClicked(data: any) {
+    this.dashboard = true
+  }
+
   // Upload Video--------------------------------------------------------------------------------
 
   onSelectFile(event: any) {
@@ -74,13 +80,12 @@ export class VideoUploadComponent {
         this.format = 'image';
         reader.onload = (event) => {
           this.url = (<FileReader>event.target).result;
-          this.compressImage(this.url, 0.7); // Compress with 70% quality
+          this.compressImage(this.url, 0.7); 
         };
       } else if (file.type.indexOf('video') > -1) {
         this.format = 'video';
         reader.onload = (event) => {
           this.url = (<FileReader>event.target).result;
-          // For video compression, you may need to use a library or API
           console.log(this.url);
         };
       }
@@ -103,7 +108,6 @@ export class VideoUploadComponent {
     };
   }
 
-
   onUpload(data: any) {
     const urlToupload = data == 'video' ? this.recordedVideoBase64 : this.url
     const fileToupload = data == 'video' ? this.recordedVideoFile : this.file
@@ -112,31 +116,17 @@ export class VideoUploadComponent {
     console.log(urlToupload, fileToupload);
 
     if (URL && FILE) {
-
-      // If you want to store it as a JSON object
-      const jsonString = JSON.stringify(urlToupload);
-      console.log('JSON String:', jsonString);
-
-      let post = {
+      const Data = {
         "userId": 1,
-        "baseUrl": jsonString,
-        "videoName": fileToupload.name,
-        "videoType": fileToupload.type,
-        "dateAndTime": fileToupload.lastModifiedDate,
-        "byteSize": fileToupload.size
+        "baseUrl": 'urlToupload',
+        "videoId": 1,
+        "file": 'fileToupload',
+        "videoCategory": null
       }
-
-      console.log(post);
-
-      this.api.postVideo(post).subscribe({
-        next: (res: any) => {
+      this.api.imageUpload(data).subscribe({
+        next: (res) => {
           console.log(res);
-          const Data = {
-            "userId": 1,
-            "baseUrl": urlToupload,
-            "videoId": res.id
-          }
-          this.monitorFile(Data);
+          alert('Successful')
         },
         error: (err) => {
           console.error(err);
@@ -146,18 +136,6 @@ export class VideoUploadComponent {
     else {
       alert('No files found to upload !')
     }
-  }
-
-  monitorFile(data: any) {
-    this.api.imageUpload(data).subscribe({
-      next: (res) => {
-        console.log(res);
-        alert('Successful')
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    });
   }
 
   onDelete() {
@@ -264,6 +242,29 @@ export class VideoUploadComponent {
 
   tab(id: any) {
     this.selectedTab = id;
+  }
+
+  Describe(txt: any, id: any) {
+    this.describe = id;
+  }
+
+  visiblearea(data: any, id: any) {
+    this.visibleArea = id;
+  }
+
+  SelectedImg(id: any) {
+    this.selectedImg = id;
+  }
+
+  public doughnutChartLabels: string[] = [this.dateForamt(new Date()), 'In-Store Sales', 'Mail-Order Sales'];
+  public doughnutChartData: number[] = [350, 450, 100];
+  chartOptions = {
+    responsive: true
+  };
+
+  dateForamt(date: Date) {
+    console.log(this.doughnutChartLabels);
+    return `${date.getFullYear()}-${date.getMonth() - 1}-${date.getDate()}\n ${date.getHours()}:${date.getMinutes()} `;
   }
 
   ngOnDestroy() {
