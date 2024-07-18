@@ -3,17 +3,44 @@ import { CommonModule } from '@angular/common';
 import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ApexPlotOptions, ApexStroke, NgApexchartsModule } from 'ng-apexcharts';
+import { ChartComponent } from 'ng-apexcharts';
+import {
+  ApexNonAxisChartSeries,
+  ApexResponsive,
+  ApexChart,
+  ApexFill,
+  ApexDataLabels,
+  ApexLegend
+} from 'ng-apexcharts';
+
+export type ChartOptions = {
+  series: ApexNonAxisChartSeries | any;
+  chart: ApexChart | any;
+  responsive: ApexResponsive[] | any;
+  labels: any;
+  fill: ApexFill | any;
+  legend: ApexLegend | any;
+  dataLabels: ApexDataLabels | any;
+  plotOptions: any;
+  grid: any;
+  colors: any;
+  tooltip: any;
+};
 
 declare var MediaRecorder: any;
 
 @Component({
   selector: 'app-video-upload',
   standalone: true,
-  imports: [CommonModule, MatTabsModule],
+  imports: [CommonModule, MatTabsModule, NgApexchartsModule],
   templateUrl: './video-upload.component.html',
   styleUrl: './video-upload.component.css'
 })
 export class VideoUploadComponent {
+
+  @ViewChild("chart") chart: ChartComponent | any;
+  public chartOptions: Partial<ChartOptions>;
 
   url!: string | ArrayBuffer | null;
   format!: string;
@@ -44,6 +71,8 @@ export class VideoUploadComponent {
   selectedTab: any;
   dashboard: boolean = false;
   selectedImg: any;
+  isPlaying: boolean = false;
+
 
   @ViewChild('preview') previewVideo: ElementRef | any;
   @ViewChild('play') playVideo: ElementRef | any;
@@ -56,11 +85,49 @@ export class VideoUploadComponent {
         console.log(this.pathUrl);
       }
     });
+
+    this.chartOptions = {
+      series: [44, 56],
+      labels: [`You scored`, 'Need to improve'],
+      legend: {
+        show: false,
+        showForSingleSeries: false
+      },
+      chart: {
+        width: '100%',
+        type: "donut"
+      },
+      plotOptions: {
+        pie: {
+          startAngle: -90,
+          endAngle: 90,
+          offsetY: 10
+        }
+      },
+      grid: {
+        padding: {
+          bottom: -80
+        }
+      },
+      colors: ['#00e396', '#008ffb'],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            }
+          }
+        }
+      ]
+    };
+
   }
 
   ngOnInit() {
     this.selectedTab = 1
     this.hasStarted = false;
+    this.isPlaying = false
   }
 
   menuClicked(data: any) {
@@ -119,7 +186,6 @@ export class VideoUploadComponent {
       const Data = {
         "userId": 1,
         "baseUrl": urlToupload,
-        "videoId": 1,
         "file": fileToupload,
         "videoCategory": 'null'
       }
@@ -237,7 +303,8 @@ export class VideoUploadComponent {
   };
 
   navigate(data: any) {
-    this.router.navigate(['/Video/' + data])
+    this.router.navigate(['/Video/' + data]);
+    this.dashboard = false
   }
 
   tab(id: any) {
@@ -256,16 +323,29 @@ export class VideoUploadComponent {
     this.selectedImg = id;
   }
 
-  public doughnutChartLabels: string[] = [this.dateForamt(new Date()), 'In-Store Sales', 'Mail-Order Sales'];
-  public doughnutChartData: number[] = [350, 450, 100];
-  chartOptions = {
-    responsive: true
-  };
-
-  dateForamt(date: Date) {
-    console.log(this.doughnutChartLabels);
-    return `${date.getFullYear()}-${date.getMonth() - 1}-${date.getDate()}\n ${date.getHours()}:${date.getMinutes()} `;
+  play() {
+    var video: any = document.getElementById('recordedVideo');
+    video.play();
+    this.isPlaying = true;
   }
+
+  pause() {
+    var video: any = document.getElementById('recordedVideo');
+    video.pause();
+    this.isPlaying = false;
+  }
+
+  DeleteVideo() {
+    this.api.deletevideo(1).subscribe({
+      next: (res => {
+        console.log(res);
+      }), error: (err => {
+        console.log(err);
+      })
+    })
+  }
+
+
 
   ngOnDestroy() {
     this.playVideo.nativeElement.src = ''

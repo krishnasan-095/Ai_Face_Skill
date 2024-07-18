@@ -23,4 +23,8 @@ export class ServiceService {
     return this.http.post(this.baseUrl + '/ProCommunication/postvideo', data);
   }
 
+  deletevideo(id: any) {
+    return this.http.delete(this.baseUrl + '/proCommunication/deleteVideo/' + id);
+  }
+
 }

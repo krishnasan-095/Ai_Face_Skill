@@ -83,14 +83,14 @@
 
                                     <div class="tab-pane show active" id="bordered-justified-tabs-preview" *ngIf="!dashboard">
                                         <ul class="nav nav-tabs nav-justified nav-bordered mb-3">
-                                            <li class="nav-item" (click)="tab(1)">
-                                                <a href="#home-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link" [class.active]="selectedTab==1">
+                                            <li class="nav-item" (click)="tab(1)" style="cursor: pointer;">
+                                                <a data-bs-toggle="tab" aria-expanded="false" class="nav-link" [class.active]="selectedTab==1">
                                                     <i class="mdi mdi-home-variant d-md-none d-block"></i>
                                                     <span class="d-none d-md-block">Step 1</span>
                                                 </a>
                                             </li>
-                                            <li class="nav-item" (click)="tab(2)">
-                                                <a href="#profile-b2" data-bs-toggle="tab" aria-expanded="true" class="nav-link" [class.active]="selectedTab==2">
+                                            <li class="nav-item" (click)="tab(2)" style="cursor: pointer;">
+                                                <a data-bs-toggle="tab" aria-expanded="true" class="nav-link" [class.active]="selectedTab==2">
                                                     <i class="mdi mdi-account-circle d-md-none d-block"></i>
                                                     <span class="d-none d-md-block">Step 2</span>
                                                 </a>
@@ -132,23 +132,23 @@
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <div class="d-flex align-items-center justify-content-center flex-wrap" style="width: 100%;">
                                                         <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column g-14 image" [class.imageSelected]="selectedImg==1" (click)="SelectedImg(1)">
-                                                            <img src="../../assets/images/1.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                            <img src="../../assets/img/1.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
                                                             <span class="text-fade">Interview</span>
                                                         </div>
                                                         <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column g-14 image" [class.imageSelected]="selectedImg==2" (click)="SelectedImg(2)">
-                                                            <img src="../../assets/images/2.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                            <img src="../../assets/img/2.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
                                                             <span class="text-fade">Presentation</span>
                                                         </div>
                                                         <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column g-14 image" [class.imageSelected]="selectedImg==3" (click)="SelectedImg(3)">
-                                                            <img src="../../assets/images/3.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                            <img src="../../assets/img/3.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
                                                             <span class="text-fade">Elevator Speech</span>
                                                         </div>
                                                         <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column g-14 image" [class.imageSelected]="selectedImg==4" (click)="SelectedImg(4)">
-                                                            <img src="../../assets/images/44.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                            <img src="../../assets/img/44.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
                                                             <span class="text-fade">Public Speaking</span>
                                                         </div>
                                                         <div class="me-15 mb-1 d-flex align-items-center justify-content-center flex-column g-14 image" [class.imageSelected]="selectedImg==5" (click)="SelectedImg(5   )">
-                                                            <img src="../../assets/images/55.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
+                                                            <img src="../../assets/img/55.png" class="bg-primary-light avatar avatar-lg rounded-circle obj-fit-cover" alt="">
                                                             <span class="text-fade">Important Meeting</span>
                                                         </div>
                                                     </div>
@@ -176,7 +176,15 @@
                                                 </div>
                                             </div><br>
 
-                                            <button style="float: right;">Next</button>
+                                            <div class="mt-30" style="
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: space-between;
+                                        ">
+                                                <button type="button" class="btn btn-danger" style="visibility: hidden;" (click)="tab(1)"><i class="fa fa-arrow-left"></i> Previous</button>
+                                                <!-- <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button> -->
+                                                <button type="submit" class="btn btn-success" (click)="tab(2)"> Next <i class="fa fa-arrow-right"></i></button>
+                                            </div>
 
 
                                         </div>
@@ -238,7 +246,16 @@
                                     align-items: center;
                                     justify-content: space-between;
                                 ">
-                                                <button type="button" class="btn btn-danger" (click)="TrashRecordedVideo()"><i class="fa fa-trash"></i> Trash</button>
+                                                <div style="
+                                                      display: flex;
+                                                      align-items: center;
+                                                      justify-content: center;
+                                                      gap: 9.3px;
+                                                  ">
+                                                    <button type="button" class="btn btn-danger" (click)="tab(1)"><i class="fa fa-arrow-left"></i> Previous</button>
+                                                    <button type="button" class="btn btn-danger" (click)="TrashRecordedVideo()"><i class="fa fa-trash"></i> Trash</button>
+
+                                                </div>
                                                 <!-- <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button> -->
                                                 <button type="submit" class="btn btn-success" (click)="onUpload('video')"><i class="fa fa-envelope-o"></i> Send</button>
                                             </div>
@@ -324,7 +341,16 @@
                                     align-items: center;
                                     justify-content: space-between;
                                 ">
-                                                <button type="button" class="btn btn-danger" (click)="onDelete()"><i class="fa fa-trash"></i> Trash</button>
+                                                <div style="
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                gap: 9.3px;
+                                            ">
+                                                    <button type="button" class="btn btn-danger" (click)="tab(1)"><i class="fa fa-arrow-left"></i> Previous</button>
+                                                    <button type="button" class="btn btn-danger" (click)="onDelete()"><i class="fa fa-trash"></i> Trash</button>
+
+                                                </div>
                                                 <!-- <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button> -->
                                                 <button type="submit" class="btn btn-success" (click)="onUpload('file')"><i class="fa fa-envelope-o"></i> Send</button>
                                             </div>
@@ -338,61 +364,1198 @@
                                         <!-- col -->
                                         <div class="col-lg-6 p-0">
                                             <div class="box">
-                                                <div class="box-body">
-                                                    <video src="../../assets/images/sample.mp4" style="width: 100%;
-    height: 100%;"></video>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /col -->
-                                        <!-- col -->
-                                        <div class="col-lg-6">
-                                            <div class="box">
-                                                <div class="box-body">
-                                                    <h4 class="box-title">Angle offset</h4>
-                                                    <div class="text-center">
-                                                        <input class="knob" data-width="250" data-height="250" data-angleOffset="85" data-linecap="round" data-fgColor="#0bb2d4" value="85" />
+                                                <div class="box-body w-350px">
+                                                    <video id="recordedVideo" src="../../assets/video/sample.mp4" style="width: 100%;margin-top: 10px;
+    height: 85%;"></video>
+
+
+                                                    <div class="d-flex align-items-center justify-content-start mt-2" style="gap: 10px;margin-left: 17px;">
+                                                        <button type="button" class="waves-effect waves-circle btn btn-circle btn-danger btn-xs mb-5 d-flex align-items-center justify-content-center" (click)="play()" *ngIf="!isPlaying"><img src="../../assets/svg/play.svg" alt=""></button>
+                                                        <button type="button" class="waves-effect waves-circle btn btn-circle btn-danger btn-xs mb-5 d-flex align-items-center justify-content-center" (click)="pause()" *ngIf="isPlaying"><img src="../../assets/svg/pause.svg" alt=""></button><br>
+                                                        <button type="button" class="waves-effect waves-light btn btn-danger btn-flat mb-5" (click)="DeleteVideo()">Delete</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- /col -->
                                         <!-- col -->
-                                        <div class="col-lg-4 col-md-6">
+                                        <div class="col-lg-6 pr-0">
                                             <div class="box">
-                                                <div class="box-body">
-                                                    <h4 class="box-title">5-digit values, step 1000</h4>
-                                                    <div class="text-center">
-                                                        <input class="knob" data-width="150" data-height="150" data-min="-15000" data-displayPrevious="true" data-max="15000" data-step="1000" value="11000" data-fgColor="#17b3a3" />
+                                                <div class="box-body w-350px">
+                                                    <h5 class="fs-18 text-center">Good Show !</h5>
+                                                    <div id="chart">
+                                                        <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels" [grid]="chartOptions.grid" [plotOptions]="chartOptions.plotOptions" [responsive]="chartOptions.responsive" [colors]="chartOptions.colors"></apx-chart>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- /col -->
                                         <!-- col -->
-                                        <div class="col-lg-4 col-md-6">
+                                        <div class="col-lg-4 col-md-6 pl-0 roundSection">
                                             <div class="box">
-                                                <div class="box-body">
-                                                    <h4 class="box-title">Readonly</h4>
-                                                    <div class="text-center">
-                                                        <input class="knob" data-width="150" data-height="150" data-linecap="round" data-fgColor="#3e8ef7" value="50" data-skin="tron" data-angleOffset="180" data-readOnly="true" data-thickness=".1" />
+                                                <div class="box-body h-350px">
+                                                    <h5 class="fs-18 text-center">Body Language Score</h5>
+                                                    <div class="flex-wrapper-rounded">
+
+
+                                                        <div class="single-chart">
+                                                            <svg viewBox="0 0 36 36" class="circular-chart blue">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="90, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">90%</text>
+    </svg>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- /col -->
                                         <!-- col -->
-                                        <div class="col-lg-4 col-md-6">
+                                        <div class="col-lg-4 col-md-6 roundSection">
                                             <div class="box">
-                                                <div class="box-body">
-                                                    <h4 class="box-title">Angle offset and arc</h4>
-                                                    <div class="text-center">
-                                                        <input class="knob" data-width="150" data-height="150" data-displayPrevious="true" data-fgColor="#ff4c52" data-skin="tron" data-cursor="true" value="65" data-thickness=".2" data-angleOffset="-125" data-angleArc="250" />
+                                                <div class="box-body h-350px">
+                                                    <h5 class="fs-18 text-center">Vocal Tone Score</h5>
+                                                    <div class="flex-wrapper-rounded">
+
+
+                                                        <div class="single-chart">
+                                                            <svg viewBox="0 0 36 36" class="circular-chart green">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="65, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">65%</text>
+    </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- col -->
+                                        <div class="col-lg-4 col-md-6 roundSection">
+                                            <div class="box">
+                                                <div class="box-body h-350px">
+                                                    <h5 class="fs-18 text-center">Communication Score</h5>
+                                                    <div class="flex-wrapper-rounded">
+
+
+                                                        <div class="single-chart">
+                                                            <svg viewBox="0 0 36 36" class="circular-chart violet">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="65, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">35%</text>
+    </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- /col -->
+                                        <!-- col -->
+                                        <div class="col-lg-4 col-md-6 pr-0 roundSection">
+                                            <div class="box">
+                                                <div class="box-body h-350px">
+                                                    <h5 class="fs-18 text-center">Word Power Score</h5>
+                                                    <div class="flex-wrapper-rounded">
+
+
+                                                        <div class="single-chart">
+                                                            <svg viewBox="0 0 36 36" class="circular-chart orange">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="20, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">20%</text>
+    </svg>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- /col -->
+
+
+                                        <!-- *******************************************Body Language***************************** -->
+
+                                        <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Body Language Score</h4>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6 pl-0 roundSection">
+                                                <div class="box">
+                                                    <div class="box-body h-350px">
+                                                        <h5 class="fs-18 text-center">Body Language Score</h5>
+                                                        <div class="flex-wrapper-rounded">
+
+
+                                                            <div class="single-chart">
+                                                                <svg viewBox="0 0 36 36" class="circular-chart blue">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="90, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">90%</text>
+    </svg>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4" style="width: 37% !important;">
+                                                <div class="card">
+                                                    <h6 class="card-header">POSITIVE FACE EMOTIONS</h6>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/surprise.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Surprise </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">10 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/happy.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Happy</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">3 %</button>
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/calm.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Calm</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">87 %</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4" style="width: 37% !important;">
+                                                <div class="card">
+                                                    <h6 class="card-header">NEGATIVE FACE EMOTIONS</h6>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/anger.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Anger </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">24 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/fear.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Fear</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">1 %</button>
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/confused.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Confused</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">54 %</button>
+                                                    </div>
+
+
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/sad.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Sad </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">4 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <section class="content" style="padding: 1.5rem 0 0px 0 !important;">
+                                            <div class="row d-flex align-items-center justify-content-center">
+
+                                                <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title">Face Expression InFo for Body Language</h4>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media bg-white align-items-center mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/eye.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>EYE CONTACT</strong></p>
+                                                            <p class="text-fade">80 %</p>
+                                                        </div>
+                                                        <div class="green-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Green</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/lips.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>SMILE COUNT</strong></p>
+                                                            <p>0 %</p>
+                                                        </div>
+                                                        <div class="red-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Red</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/handsCrossed.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HANDS CROSSED</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/head.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HEAD MOVEMENT</strong></p>
+                                                            <p>7 %</p>
+                                                        </div>
+                                                        <div class="red-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Red</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/handUsed.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HANDS USED</strong></p>
+                                                            <p>NA</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/wrist.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WRIST CLOSED</strong></p>
+                                                            <p>NA</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/leg.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WEIGNT ON ONE LEG</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/leg.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>LEG MOVEMENT</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/twoLegs.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WEIGHT BALANCED ON BOTH LEGS</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </section>
+
+                                        <!-- *******************************************Vocal Tone***************************** -->
+
+                                        <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Vocal Tone Score</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6 pl-0 roundSection">
+                                                <div class="box">
+                                                    <div class="box-body h-350px">
+                                                        <h5 class="fs-18 text-center">Vocal Tone Score</h5>
+                                                        <div class="flex-wrapper-rounded">
+
+
+                                                            <div class="single-chart">
+                                                                <svg viewBox="0 0 36 36" class="circular-chart green">
+          <path class="circle-bg"
+            d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path class="circle"
+            stroke-dasharray="65, 100"
+            d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <text x="18" y="20.35" class="percentage">65%</text>
+        </svg>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4" style="width: 37% !important;">
+                                                <div class="card">
+                                                    <h6 class="card-header">POSITIVE FACE EMOTIONS</h6>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/surprise.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Surprise </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">10 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/happy.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Happy</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">3 %</button>
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/calm.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Calm</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">87 %</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4" style="width: 37% !important;">
+                                                <div class="card">
+                                                    <h6 class="card-header">NEGATIVE FACE EMOTIONS</h6>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/anger.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Anger </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">24 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/fear.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Fear</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">1 %</button>
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/confused.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Confused</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">54 %</button>
+                                                    </div>
+
+
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/sad.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Sad </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">4 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <section class="content" style="padding: 1.5rem 0 0px 0 !important;">
+                                            <div class="row d-flex align-items-center justify-content-center">
+
+                                                <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title">Face Expression InFo for Vocal Tone</h4>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media bg-white align-items-center mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/eye.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>EYE CONTACT</strong></p>
+                                                            <p class="text-fade">80 %</p>
+                                                        </div>
+                                                        <div class="green-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Green</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/lips.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>SMILE COUNT</strong></p>
+                                                            <p>0 %</p>
+                                                        </div>
+                                                        <div class="red-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Red</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/handsCrossed.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HANDS CROSSED</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/head.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HEAD MOVEMENT</strong></p>
+                                                            <p>7 %</p>
+                                                        </div>
+                                                        <div class="red-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Red</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/handUsed.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HANDS USED</strong></p>
+                                                            <p>NA</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/wrist.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WRIST CLOSED</strong></p>
+                                                            <p>NA</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/leg.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WEIGNT ON ONE LEG</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/leg.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>LEG MOVEMENT</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/twoLegs.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WEIGHT BALANCED ON BOTH LEGS</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </section>
+
+                                        <!-- *******************************************Communication Score***************************** -->
+
+                                        <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Communication Score</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6 pl-0 roundSection">
+                                                <div class="box">
+                                                    <div class="box-body h-350px">
+                                                        <h5 class="fs-18 text-center">Communication Score</h5>
+                                                        <div class="flex-wrapper-rounded">
+
+
+                                                            <div class="single-chart">
+                                                                <svg viewBox="0 0 36 36" class="circular-chart violet">
+          <path class="circle-bg"
+            d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path class="circle"
+            stroke-dasharray="65, 100"
+            d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <text x="18" y="20.35" class="percentage">35%</text>
+        </svg>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4" style="width: 37% !important;">
+                                                <div class="card">
+                                                    <h6 class="card-header">POSITIVE FACE EMOTIONS</h6>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/surprise.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Surprise </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">10 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/happy.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Happy</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">3 %</button>
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/calm.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Calm</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">87 %</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4" style="width: 37% !important;">
+                                                <div class="card">
+                                                    <h6 class="card-header">NEGATIVE FACE EMOTIONS</h6>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/anger.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Anger </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">24 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/fear.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Fear</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">1 %</button>
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/confused.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Confused</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">54 %</button>
+                                                    </div>
+
+
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/sad.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Sad </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">4 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <section class="content" style="padding: 1.5rem 0 0px 0 !important;">
+                                            <div class="row d-flex align-items-center justify-content-center">
+
+                                                <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title">Face Expression InFo for Communication</h4>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media bg-white align-items-center mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/eye.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>EYE CONTACT</strong></p>
+                                                            <p class="text-fade">80 %</p>
+                                                        </div>
+                                                        <div class="green-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Green</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/lips.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>SMILE COUNT</strong></p>
+                                                            <p>0 %</p>
+                                                        </div>
+                                                        <div class="red-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Red</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/handsCrossed.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HANDS CROSSED</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/head.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HEAD MOVEMENT</strong></p>
+                                                            <p>7 %</p>
+                                                        </div>
+                                                        <div class="red-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Red</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/handUsed.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HANDS USED</strong></p>
+                                                            <p>NA</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/wrist.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WRIST CLOSED</strong></p>
+                                                            <p>NA</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/leg.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WEIGNT ON ONE LEG</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/leg.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>LEG MOVEMENT</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/twoLegs.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WEIGHT BALANCED ON BOTH LEGS</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </section>
+
+                                        <!-- *******************************************Word Power Score***************************** -->
+
+                                        <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Word Power Score</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6 pl-0 roundSection">
+                                                <div class="box">
+                                                    <div class="box-body h-350px">
+                                                        <h5 class="fs-18 text-center">Word Power Score</h5>
+                                                        <div class="flex-wrapper-rounded">
+
+
+                                                            <div class="single-chart">
+                                                                <svg viewBox="0 0 36 36" class="circular-chart orange">
+          <path class="circle-bg"
+            d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path class="circle"
+            stroke-dasharray="20, 100"
+            d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <text x="18" y="20.35" class="percentage">20%</text>
+        </svg>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4" style="width: 37% !important;">
+                                                <div class="card">
+                                                    <h6 class="card-header">POSITIVE FACE EMOTIONS</h6>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/surprise.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Surprise </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">10 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/happy.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Happy</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">3 %</button>
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/calm.svg" alt="" style="width: 60px;
+    height: 60px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Calm</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">87 %</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4" style="width: 37% !important;">
+                                                <div class="card">
+                                                    <h6 class="card-header">NEGATIVE FACE EMOTIONS</h6>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/anger.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Anger </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">24 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/fear.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Fear</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">1 %</button>
+                                                    </div>
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/confused.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Confused</p>
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">54 %</button>
+                                                    </div>
+
+
+                                                    <div class="card-body" style="display: flex;
+                                                    align-items: center;padding: 17px !important;
+                                                    justify-content: flex-start;position: relative;
+                                                    gap: 20px;">
+                                                        <img src="../../assets/svg/sad.svg" alt="" style="width: 40px;
+    height: 40px;">
+                                                        <p class="card-text text-gray-600" style="font-size: 17px;">Sad </p>
+                                                        <!-- <span class="badge badge-pill badge-default">Text</span> -->
+                                                        <button class="waves-effect waves-light btn btn-social-icon btn-flickr" style="padding: 4px !important;position: absolute;
+    right: 30px;">4 %</button>
+                                                        <!-- <span class="badge badge-pill badge-success">+7</span> -->
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <section class="content" style="padding: 1.5rem 0 0px 0 !important;">
+                                            <div class="row d-flex align-items-center justify-content-center">
+
+                                                <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title">Face Expression InFo for Word Power</h4>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media bg-white align-items-center mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/eye.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>EYE CONTACT</strong></p>
+                                                            <p class="text-fade">80 %</p>
+                                                        </div>
+                                                        <div class="green-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Green</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/lips.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>SMILE COUNT</strong></p>
+                                                            <p>0 %</p>
+                                                        </div>
+                                                        <div class="red-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Red</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/handsCrossed.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HANDS CROSSED</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/head.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HEAD MOVEMENT</strong></p>
+                                                            <p>7 %</p>
+                                                        </div>
+                                                        <div class="red-signal">
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Red</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/handUsed.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>HANDS USED</strong></p>
+                                                            <p>NA</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/wrist.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WRIST CLOSED</strong></p>
+                                                            <p>NA</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/leg.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WEIGNT ON ONE LEG</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/leg.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>LEG MOVEMENT</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div class="media align-items-center bg-white mb-20">
+                                                        <img class="avatar avatar-xl m-0" src="../../assets/svg/twoLegs.svg" alt="...">
+                                                        <div class="media-body">
+                                                            <p><strong>WEIGHT BALANCED ON BOTH LEGS</strong></p>
+                                                            <p>N / A</p>
+                                                        </div>
+                                                        <!-- <div>
+                                                            <a class="btn btn-primary-light btn-sm" href="#">Follow</a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </section>
+
                                     </div>
 
 
