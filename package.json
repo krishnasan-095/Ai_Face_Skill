@@ -23,6 +23,7 @@
         "apexcharts": "^3.50.0",
         "bootstrap-icons": "^1.11.3",
         "chart.js": "^4.4.3",
+        "localforage": "^1.10.0",
         "ng-apexcharts": "^1.11.0",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",

@@ -13,6 +13,9 @@ import {
   ApexDataLabels,
   ApexLegend
 } from 'ng-apexcharts';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import localforage from 'localforage';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries | any;
@@ -42,8 +45,8 @@ export class VideoUploadComponent {
   @ViewChild("chart") chart: ChartComponent | any;
   public chartOptions: Partial<ChartOptions>;
 
-  url!: string | ArrayBuffer | null;
-  format!: string;
+  url!: string | ArrayBuffer | any;
+  format: any;
   file!: File | any;
   pathUrl: any;
   describe: any;
@@ -66,19 +69,21 @@ export class VideoUploadComponent {
   recordedVideoUrl: string = '';
   isEnd: boolean = false;
   hasStarted: boolean = false;
-  recordedVideoBase64: string = '';
+  recordedVideoBase64: any = '';
   fileName: any;
   selectedTab: any;
   dashboard: boolean = false;
   selectedImg: any;
   isPlaying: boolean = false;
-
+  recentVideoUrl: any
+  selectedCategory: any
+  private videoUrlFile = 'assets/recentVideoUrl.json';
 
   @ViewChild('preview') previewVideo: ElementRef | any;
   @ViewChild('play') playVideo: ElementRef | any;
   @ViewChild('fileInput') fileInput: ElementRef | any;
 
-  constructor(public router: Router, public api: ServiceService) {
+  constructor(public router: Router, public api: ServiceService, private http: HttpClient) {
     this.router.events.subscribe((event: any) => {
       if (event.constructor.name === 'NavigationEnd') {
         this.pathUrl = this.router.url.split('/')[2];
@@ -124,14 +129,31 @@ export class VideoUploadComponent {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await localforage.config({
+      name: 'Pro Communication', // Customize the storage name
+    });
+
     this.selectedTab = 1
     this.hasStarted = false;
     this.isPlaying = false
+
+    const videoStatus = localStorage.getItem('video');
+    videoStatus == 'uploaded' ? (this.dashboard = true, this.format = 'video', this.selectedCategory = 1) : this.dashboard = false
+    this.recentVideoUrl = await localforage.getItem('RecentvideoUrl');
+    console.log(this.recentVideoUrl);
   }
 
   menuClicked(data: any) {
+    this.format = 'video'
+    this.selectedCategory = 1
     this.dashboard = true
+  }
+
+  selectCategory(id: any) {
+    this.selectedCategory = id
+    console.log(this.selectedCategory);
+
   }
 
   // Upload Video--------------------------------------------------------------------------------
@@ -146,7 +168,7 @@ export class VideoUploadComponent {
       if (file.type.indexOf('image') > -1) {
         this.format = 'image';
         reader.onload = (event) => {
-          this.url = (<FileReader>event.target).result;
+          this.url = (<FileReader>event.target).result as string;
           this.compressImage(this.url, 0.7);
         };
       } else if (file.type.indexOf('video') > -1) {
@@ -176,23 +198,35 @@ export class VideoUploadComponent {
   }
 
   onUpload(data: any) {
-    const urlToupload = data == 'video' ? this.recordedVideoBase64 : this.url
+    const urlToupload: any = data == 'video' ? this.recordedVideoBase64 : this.url
     const fileToupload = data == 'video' ? this.recordedVideoFile : this.file
     const URL = urlToupload != undefined && urlToupload != ''
     const FILE = fileToupload != undefined && fileToupload != ''
-    console.log(urlToupload, fileToupload);
+    console.log(fileToupload);
 
     if (URL && FILE) {
       const Data = {
         "userId": 1,
         "baseUrl": urlToupload,
-        "file": fileToupload,
+        "name": fileToupload.name,
+        "lastModifiedDate": fileToupload.lastModifiedDate,
+        "size": fileToupload.size,
+        "type": fileToupload.type,
         "videoCategory": 'null'
       }
+      console.log(Data);
+
       this.api.imageUpload(Data).subscribe({
-        next: (res) => {
+        next: async (res) => {
           console.log(res);
           alert('Successful')
+          this.dashboard = true;
+          this.selectedCategory = 1
+          this.format = 'video'
+          this.recordedVideoBase64 = ''
+          this.url = ''
+          localStorage.setItem('video', 'uploaded');
+          await localforage.setItem('RecentvideoUrl', urlToupload);
         },
         error: (err) => {
           console.error(err);
@@ -303,6 +337,7 @@ export class VideoUploadComponent {
   };
 
   navigate(data: any) {
+    this.selectedTab = 2
     this.router.navigate(['/Video/' + data]);
     this.dashboard = false
   }
@@ -344,8 +379,6 @@ export class VideoUploadComponent {
       })
     })
   }
-
-
 
   ngOnDestroy() {
     this.playVideo.nativeElement.src = ''

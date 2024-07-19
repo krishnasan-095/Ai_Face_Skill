@@ -36,8 +36,10 @@
                                     <a class="btn btn-danger" (click)="navigate('Record')">Record Video</a>
                                 </div>
                                 <div class="email-menu-list mt-3 nav nav-tabs mb-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                    <a id="inbox-tab" data-bs-toggle="pill" aria-expanded="false" class="nav-link active show text-danger fw-bold" (click)="menuClicked('dashboard')"><i class="fa fa-inbox me-2"></i>Dashboard<span class="badge badge-danger-light float-end ms-2">7</span></a>
-                                    <a href="#starred" id="starred-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link"><i class="fa fa-star me-2"></i>Starred</a>
+                                    <a href="javascript:void(0)" id="inbox-tab" data-bs-toggle="pill" aria-expanded="false" class="nav-link active show text-danger fw-bold" (click)="menuClicked('dashboard')"><i class="fa fa-inbox me-2"></i>Dashboard
+                                        <!-- <span class="badge badge-danger-light float-end ms-2">7</span> -->
+                                    </a>
+                                    <a id="starred-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link"><i class="fa fa-star me-2"></i>All video</a>
                                     <a href="#snoozed" id="snoozed-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link"><i class="fa fa-clock-o me-2"></i>Snoozed</a>
                                     <a href="#draft" id="draft-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link"><i class="fa fa-file me-2"></i>Draft<span class="badge badge-info-light float-end ms-2">2</span></a>
                                     <a href="#sentmail" id="sentmail-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link"><i class="fa fa-paper-plane-o me-2"></i>Sent Mail</a>
@@ -365,7 +367,7 @@
                                         <div class="col-lg-6 p-0">
                                             <div class="box">
                                                 <div class="box-body w-350px">
-                                                    <video id="recordedVideo" src="../../assets/video/sample.mp4" style="width: 100%;margin-top: 10px;
+                                                    <video id="recordedVideo" [src]="recentVideoUrl" *ngIf="format==='video' && recentVideoUrl" style="width: 100%;margin-top: 10px;
     height: 85%;"></video>
 
 
@@ -392,7 +394,7 @@
                                         <!-- /col -->
                                         <!-- col -->
                                         <div class="col-lg-4 col-md-6 pl-0 roundSection">
-                                            <div class="box">
+                                            <div class="box cursor-pointer" [class.selectedcategory]="selectedCategory==1" (click)="selectCategory(1)">
                                                 <div class="box-body h-350px">
                                                     <h5 class="fs-18 text-center">Body Language Score</h5>
                                                     <div class="flex-wrapper-rounded">
@@ -421,7 +423,7 @@
                                         <!-- /col -->
                                         <!-- col -->
                                         <div class="col-lg-4 col-md-6 roundSection">
-                                            <div class="box">
+                                            <div class="box cursor-pointer" [class.selectedcategory]="selectedCategory==2" (click)="selectCategory(2)">
                                                 <div class="box-body h-350px">
                                                     <h5 class="fs-18 text-center">Vocal Tone Score</h5>
                                                     <div class="flex-wrapper-rounded">
@@ -451,7 +453,7 @@
 
                                         <!-- col -->
                                         <div class="col-lg-4 col-md-6 roundSection">
-                                            <div class="box">
+                                            <div class="box cursor-pointer" [class.selectedcategory]="selectedCategory==3" (click)="selectCategory(3)">
                                                 <div class="box-body h-350px">
                                                     <h5 class="fs-18 text-center">Communication Score</h5>
                                                     <div class="flex-wrapper-rounded">
@@ -481,7 +483,7 @@
                                         <!-- /col -->
                                         <!-- col -->
                                         <div class="col-lg-4 col-md-6 pr-0 roundSection">
-                                            <div class="box">
+                                            <div class="box cursor-pointer" [class.selectedcategory]="selectedCategory==4" (click)="selectCategory(4)">
                                                 <div class="box-body h-350px">
                                                     <h5 class="fs-18 text-center">Word Power Score</h5>
                                                     <div class="flex-wrapper-rounded">
@@ -512,14 +514,14 @@
 
                                         <!-- *******************************************Body Language***************************** -->
 
-                                        <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                        <div *ngIf="selectedCategory==1" class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
                                             <div class="card-header">
                                                 <h4 class="card-title">Body Language Score</h4>
                                             </div>
                                         </div>
 
 
-                                        <div class="row">
+                                        <div *ngIf="selectedCategory==1" class="row">
                                             <div class="col-lg-4 col-md-6 pl-0 roundSection">
                                                 <div class="box">
                                                     <div class="box-body h-350px">
@@ -641,7 +643,7 @@
                                             </div>
                                         </div>
 
-                                        <section class="content" style="padding: 1.5rem 0 0px 0 !important;">
+                                        <section *ngIf="selectedCategory==1" class="content" style="padding: 1.5rem 0 0px 0 !important;">
                                             <div class="row d-flex align-items-center justify-content-center">
 
                                                 <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
@@ -774,13 +776,13 @@
 
                                         <!-- *******************************************Vocal Tone***************************** -->
 
-                                        <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                        <div *ngIf="selectedCategory==2" class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
                                             <div class="card-header">
                                                 <h4 class="card-title">Vocal Tone Score</h4>
                                             </div>
                                         </div>
 
-                                        <div class="row">
+                                        <div *ngIf="selectedCategory==2" class="row">
                                             <div class="col-lg-4 col-md-6 pl-0 roundSection">
                                                 <div class="box">
                                                     <div class="box-body h-350px">
@@ -902,7 +904,7 @@
                                             </div>
                                         </div>
 
-                                        <section class="content" style="padding: 1.5rem 0 0px 0 !important;">
+                                        <section *ngIf="selectedCategory==2" class="content" style="padding: 1.5rem 0 0px 0 !important;">
                                             <div class="row d-flex align-items-center justify-content-center">
 
                                                 <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
@@ -1035,13 +1037,13 @@
 
                                         <!-- *******************************************Communication Score***************************** -->
 
-                                        <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                        <div *ngIf="selectedCategory==3" class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
                                             <div class="card-header">
                                                 <h4 class="card-title">Communication Score</h4>
                                             </div>
                                         </div>
 
-                                        <div class="row">
+                                        <div *ngIf="selectedCategory==3" class="row">
                                             <div class="col-lg-4 col-md-6 pl-0 roundSection">
                                                 <div class="box">
                                                     <div class="box-body h-350px">
@@ -1163,7 +1165,7 @@
                                             </div>
                                         </div>
 
-                                        <section class="content" style="padding: 1.5rem 0 0px 0 !important;">
+                                        <section *ngIf="selectedCategory==3" class="content" style="padding: 1.5rem 0 0px 0 !important;">
                                             <div class="row d-flex align-items-center justify-content-center">
 
                                                 <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
@@ -1296,13 +1298,13 @@
 
                                         <!-- *******************************************Word Power Score***************************** -->
 
-                                        <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
+                                        <div *ngIf="selectedCategory==4" class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">
                                             <div class="card-header">
                                                 <h4 class="card-title">Word Power Score</h4>
                                             </div>
                                         </div>
 
-                                        <div class="row">
+                                        <div *ngIf="selectedCategory==4" class="row">
                                             <div class="col-lg-4 col-md-6 pl-0 roundSection">
                                                 <div class="box">
                                                     <div class="box-body h-350px">
@@ -1425,7 +1427,7 @@
                                             </div>
                                         </div>
 
-                                        <section class="content" style="padding: 1.5rem 0 0px 0 !important;">
+                                        <section *ngIf="selectedCategory==4" class="content" style="padding: 1.5rem 0 0px 0 !important;">
                                             <div class="row d-flex align-items-center justify-content-center">
 
                                                 <div class="card bg-primary-light" style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important;">

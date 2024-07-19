@@ -1,0 +1,16 @@
+meter::-webkit-meter-bar {
+    background: lightgray;
+}
+
+meter::-webkit-meter-optimum-value {
+    background: #2c43f5;
+}
+
+
+/* meter::-webkit-meter-suboptimum-value {
+    background: orange;
+}
+
+meter::-webkit-meter-even-less-good-value {
+    background: red;
+} */

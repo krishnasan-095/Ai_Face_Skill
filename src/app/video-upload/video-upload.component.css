@@ -165,6 +165,14 @@ p {
     width: 25% !important;
 }
 
+.selectedcategory {
+    border: 2px solid grey !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
 @media screen and (max-width:600px) {
     .step1 {
         flex-direction: column !important;
