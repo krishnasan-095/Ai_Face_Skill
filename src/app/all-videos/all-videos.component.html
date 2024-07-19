@@ -1,0 +1,31 @@
+<div class="row allVideos">
+    <div class="col-md-12 col-lg-4 EachCard" *ngFor="let item of allVideos">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <span><i class="fa fa-user me-2"></i> <a>Nil Yeager</a></span>
+                <span class="text-muted">Added 4 hours ago</span>
+            </div>
+            <video class="card-img-top bter-0 btsr-0" src="data:video/webm;base64,{{item?.baseUrl}}"></video>
+            <!-- <img class="card-img-top bter-0 btsr-0" src="data:video/webm;base64,{{item?.baseUrl}}" alt="Card image cap"> -->
+            <!-- <div class="card-body">
+                <h4 class="card-title fw-600">Multiple titles</h4>
+                <p class="card-text text-gray-600">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div> -->
+            <div class="card-footer justify-content-between d-flex">
+                <ul class="list-inline mb-0 me-2">
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fa fa-comment-o"></i></a>
+                    </li>
+                </ul>
+
+                <ul class="list-inline mb-0">
+                    <li><a href="#">Edit</a></li>
+                    <li><a href="#">Delete</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

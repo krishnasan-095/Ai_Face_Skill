@@ -5,6 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ServiceService } from './service.service';
 import { VideoUploadComponent } from './video-upload/video-upload.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AllVideosComponent } from './all-videos/all-videos.component';
 
 export const routes: Routes = [
     {
@@ -14,7 +17,19 @@ export const routes: Routes = [
     {
         path: 'Video/:data',
         component: VideoUploadComponent
-    }
+    },
+    {
+        path: 'allVideos',
+        component: AllVideosComponent
+    },
+    // {
+    //     path: 'login',
+    //     component: LoginComponent
+    // },
+    // {
+    //     path: 'register',
+    //     component: RegisterComponent
+    // }
 ];
 
 @NgModule({

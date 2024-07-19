@@ -27,4 +27,17 @@ export class ServiceService {
     return this.http.delete(this.baseUrl + '/proCommunication/deleteVideo/' + id);
   }
 
+  getIndividualvideoDetailbyId(data: any) {
+    return this.http.post(this.baseUrl + '/proCommunication/getdetails', data);
+  }
+
+  getAllvideoDetail(userId: any) {
+    return this.http.get(this.baseUrl + '/proCommunication/getAllDetailsScore/' + userId);
+  }
+
+  getAllvideo(userId: any) {
+    return this.http.get(this.baseUrl + '/proCommunication/getVideos/' + userId);
+  }
+
+
 }
