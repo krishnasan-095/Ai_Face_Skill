@@ -39,5 +39,12 @@ export class ServiceService {
     return this.http.get(this.baseUrl + '/proCommunication/getVideos/' + userId);
   }
 
+  getAllScore(userId: any) {
+    return this.http.get(this.baseUrl + '/proCommunication/getAllDetailsScore/' + userId);
+  }
+
+  getTopFiveRank(userId: any) {
+    return this.http.get(this.baseUrl + '/proCommunication/getTopRank/' + userId);
+  }
 
 }

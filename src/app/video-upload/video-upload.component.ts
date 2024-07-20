@@ -112,14 +112,17 @@ export class VideoUploadComponent {
     await this.loadForageData()
 
     const videoStatus = localStorage.getItem('video');
-    videoStatus == 'uploaded' ? (this.dashboard = true, this.format = 'video', this.selectedCategory = 1) : this.dashboard = false
+    videoStatus == 'uploaded' ? (this.dashboard = true, this.format = 'video', this.selectedCategory = 1) : (this.dashboard = false, this.selectedTab = 1)
     videoStatus == 'uploaded' ? this.buildVideoScoreChart() : null
   }
 
   async loadForageData() {
     try {
       this.recentVideoUrl = await this.getForagebyKey('RecentvideoUrl');
-      this.MyVideoScores = await this.getForagebyKey('MyVideoScores');
+      // this.MyVideoScores = await this.getForagebyKey('MyVideoScores');
+      const MyScore: any = await localStorage.getItem('MyVideoScores');
+      this.MyVideoScores = JSON.parse(MyScore);
+
       const keysToExclude = ["id", "userId", "videoId", "voiceGraphBase64"];
 
       for (const key in this.MyVideoScores) {
@@ -256,13 +259,11 @@ export class VideoUploadComponent {
           }
         }
 
-        localforage.setItem('MyVideoScores', this.MyVideoScores).then(function () {
-          console.log('Data has been stored 14');
-        }).catch(function (err) {
-          console.error('Error storing data: 14', err);
-        });
+        localStorage.setItem('MyVideoScores', JSON.stringify(this.MyVideoScores));
+
         this.selectedCategory = 1;
-        this.MyVideoScores = await this.getForagebyKey('MyVideoScores');
+        const MyScore: any = await localStorage.getItem('MyVideoScores');
+        this.MyVideoScores = JSON.parse(MyScore);
         this.buildVideoScoreChart()
         alert('Successful');
       }), error: (err => {
@@ -462,7 +463,8 @@ export class VideoUploadComponent {
         this.selectedTab = 1;
         this.recentVideoUrl = ''
         this.deleteForagebyKey('RecentvideoUrl')
-        this.deleteForagebyKey('MyVideoScores')
+        // this.deleteForagebyKey('MyVideoScores')
+        localStorage.removeItem('MyVideoScores');
       }), error: (err => {
         console.log(err);
       })
@@ -491,6 +493,7 @@ export class VideoUploadComponent {
     this.playVideo.nativeElement.src = ''
     localStorage.removeItem('video')
     await this.deleteForagebyKey('RecentvideoUrl')
-    await this.deleteForagebyKey('MyVideoScores')
+    // this.deleteForagebyKey('MyVideoScores')
+    localStorage.removeItem('MyVideoScores');
   }
 }
