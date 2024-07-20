@@ -54,12 +54,6 @@ export class DashboradHomeComponent {
         events: {
           click: function (chart: any, w: any, e: any) {
             // console.log(chart, w, e)
-          },
-          dataPointMouseEnter: function (event: any, chartContext: any, config: any) {
-            console.log('dataPointMouseEnter', event, chartContext, config);
-          },
-          dataPointMouseLeave: function (event: any, chartContext: any, config: any) {
-            console.log('dataPointMouseLeave', event, chartContext, config);
           }
         }
       },
@@ -157,7 +151,7 @@ export class DashboradHomeComponent {
   }
 
   TopFiveRank() {
-    this.api.getTopFiveRank(this.userId).subscribe({
+    this.api.getTopFiveRank().subscribe({
       next: (res => {
         console.log(res);
         this.TopFiveRanks = res;

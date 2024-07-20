@@ -43,12 +43,13 @@ export class ServiceService {
     return this.http.get(this.baseUrl + '/proCommunication/getAllDetailsScore/' + userId);
   }
 
-  getTopFiveRank(userId: any) {
+  // show top 5 Rank Users
+  getTopFiveRank() {
     return this.http.get(this.baseUrl + '/proCommunication/getTopRank');
   }
 
   getTopFiveVideoScore(userId: any) {
-    return this.http.get(this.baseUrl + '/proCommunication/getTopRank/' + userId);
+    return this.http.get(this.baseUrl + '/proCommunication/getTopScore/' + userId);
   }
-
+  // overAllScroe
 }

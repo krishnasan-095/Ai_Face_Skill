@@ -590,7 +590,7 @@
 
                                                 <div class="card bg-primary-light " style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important; ">
                                                     <div class="card-header ">
-                                                        <h4 class="card-title ">Face Expression InFo for Body Language</h4>
+                                                        <h4 class="card-title ">Body Language Score</h4>
                                                     </div>
                                                 </div>
 
@@ -612,7 +612,7 @@
                                                     <div class="media align-items-center bg-white mb-20 ">
                                                         <img class="avatar avatar-xl m-0 " src="../../assets/svg/lips.svg " alt="... ">
                                                         <div class="media-body ">
-                                                            <p><strong>SMILE COUNT</strong></p>
+                                                            <p><strong>SMILE</strong></p>
                                                             <p>{{MyVideoScores?.smileCount}} %</p>
                                                         </div>
                                                         <div class="red-signal ">
@@ -723,17 +723,17 @@
 
                                                 <div class="card bg-primary-light " style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important; ">
                                                     <div class="card-header ">
-                                                        <h4 class="card-title ">Face Expression InFo for Speech</h4>
+                                                        <h4 class="card-title ">Speech Score</h4>
                                                     </div>
                                                 </div>
 
 
                                                 <div class="col-md-4 col-12 ">
                                                     <div class="media bg-white align-items-center mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/eye.svg " alt="... ">
+                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/tone.svg " alt="... ">
                                                         <div class="media-body ">
-                                                            <p><strong>EYE CONTACT</strong></p>
-                                                            <p class="text-fade ">80 %</p>
+                                                            <p><strong>Tone</strong></p>
+                                                            <p class="text-fade ">{{MyVideoScores?.tone}} %</p>
                                                         </div>
                                                         <div class="green-signal ">
                                                             <a class="btn btn-primary-light btn-sm " href="# ">Green</a>
@@ -743,10 +743,10 @@
 
                                                 <div class="col-md-4 col-12 ">
                                                     <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/lips.svg " alt="... ">
+                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/voiceConfidence.svg " alt="... ">
                                                         <div class="media-body ">
-                                                            <p><strong>SMILE COUNT</strong></p>
-                                                            <p>0 %</p>
+                                                            <p><strong>Voice Confidence</strong></p>
+                                                            <p>{{MyVideoScores?.voiceConfidence}} %</p>
                                                         </div>
                                                         <div class="red-signal ">
                                                             <a class="btn btn-primary-light btn-sm " href="# ">Red</a>
@@ -758,87 +758,9 @@
                                                     <div class="media align-items-center bg-white mb-20 ">
                                                         <img class="avatar avatar-xl m-0 " src="../../assets/svg/handsCrossed.svg " alt="... ">
                                                         <div class="media-body ">
-                                                            <p><strong>HANDS CROSSED</strong></p>
-                                                            <p>N / A</p>
-                                                        </div>
-                                                        <!-- <div>
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/head.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>HEAD MOVEMENT</strong></p>
-                                                            <p>7 %</p>
-                                                        </div>
-                                                        <div class="red-signal ">
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Red</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/handUsed.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>HANDS USED</strong></p>
-                                                            <p>NA</p>
-                                                        </div>
-                                                        <!-- <div>
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/wrist.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>WRIST CLOSED</strong></p>
-                                                            <p>NA</p>
-                                                        </div>
-                                                        <!-- <div>
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/leg.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>WEIGNT ON ONE LEG</strong></p>
-                                                            <p>N / A</p>
-                                                        </div>
-                                                        <!-- <div>
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/leg.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>LEG MOVEMENT</strong></p>
-                                                            <p>N / A</p>
-                                                        </div>
-                                                        <!-- <div>
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/twoLegs.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>WEIGHT BALANCED ON BOTH LEGS</strong></p>
-                                                            <p>N / A</p>
+                                                            <p><strong>Voice Graph</strong></p>
+                                                            <!-- <p>{{MyVideoScores?.voiceGraphBase64}} %</p> -->
+                                                            <p></p>
                                                         </div>
                                                         <!-- <div>
                                                             <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
@@ -856,17 +778,17 @@
 
                                                 <div class="card bg-primary-light " style="width: 98% !important;background-color: #293146 !important;box-shadow: none !important; ">
                                                     <div class="card-header ">
-                                                        <h4 class="card-title ">Face Expression InFo for Communication</h4>
+                                                        <h4 class="card-title ">Communication Score</h4>
                                                     </div>
                                                 </div>
 
 
                                                 <div class="col-md-4 col-12 ">
                                                     <div class="media bg-white align-items-center mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/eye.svg " alt="... ">
+                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/fluency.svg " alt="... ">
                                                         <div class="media-body ">
-                                                            <p><strong>EYE CONTACT</strong></p>
-                                                            <p class="text-fade ">80 %</p>
+                                                            <p><strong>Fluency</strong></p>
+                                                            <p class="text-fade ">{{MyVideoScores?.fluency}} %</p>
                                                         </div>
                                                         <div class="green-signal ">
                                                             <a class="btn btn-primary-light btn-sm " href="# ">Green</a>
@@ -876,10 +798,10 @@
 
                                                 <div class="col-md-4 col-12 ">
                                                     <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/lips.svg " alt="... ">
+                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/grammar.svg " alt="... ">
                                                         <div class="media-body ">
-                                                            <p><strong>SMILE COUNT</strong></p>
-                                                            <p>0 %</p>
+                                                            <p><strong>Grammar</strong></p>
+                                                            <p>{{MyVideoScores?.grammar}} %</p>
                                                         </div>
                                                         <div class="red-signal ">
                                                             <a class="btn btn-primary-light btn-sm " href="# ">Red</a>
@@ -889,96 +811,16 @@
 
                                                 <div class="col-md-4 col-12 ">
                                                     <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/handsCrossed.svg " alt="... ">
+                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/pronunciation.svg " alt="... ">
                                                         <div class="media-body ">
-                                                            <p><strong>HANDS CROSSED</strong></p>
-                                                            <p>N / A</p>
+                                                            <p><strong>Pronounciation</strong></p>
+                                                            <p>{{MyVideoScores?.pronunciation}} %</p>
                                                         </div>
                                                         <!-- <div>
                                                             <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
                                                         </div> -->
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/head.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>HEAD MOVEMENT</strong></p>
-                                                            <p>7 %</p>
-                                                        </div>
-                                                        <div class="red-signal ">
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Red</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/handUsed.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>HANDS USED</strong></p>
-                                                            <p>NA</p>
-                                                        </div>
-                                                        <!-- <div>
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/wrist.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>WRIST CLOSED</strong></p>
-                                                            <p>NA</p>
-                                                        </div>
-                                                        <!-- <div>
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/leg.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>WEIGNT ON ONE LEG</strong></p>
-                                                            <p>N / A</p>
-                                                        </div>
-                                                        <!-- <div>
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/leg.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>LEG MOVEMENT</strong></p>
-                                                            <p>N / A</p>
-                                                        </div>
-                                                        <!-- <div>
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-12 ">
-                                                    <div class="media align-items-center bg-white mb-20 ">
-                                                        <img class="avatar avatar-xl m-0 " src="../../assets/svg/twoLegs.svg " alt="... ">
-                                                        <div class="media-body ">
-                                                            <p><strong>WEIGHT BALANCED ON BOTH LEGS</strong></p>
-                                                            <p>N / A</p>
-                                                        </div>
-                                                        <!-- <div>
-                                                            <a class="btn btn-primary-light btn-sm " href="# ">Follow</a>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-
                                             </div>
                                         </section>
 
