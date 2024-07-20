@@ -44,6 +44,10 @@ export class ServiceService {
   }
 
   getTopFiveRank(userId: any) {
+    return this.http.get(this.baseUrl + '/proCommunication/getTopRank');
+  }
+
+  getTopFiveVideoScore(userId: any) {
     return this.http.get(this.baseUrl + '/proCommunication/getTopRank/' + userId);
   }
 

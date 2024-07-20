@@ -13,3 +13,8 @@ body {
 .apexcharts-legend {
     display: none !important;
 }
+
+.apexcharts-menu-item {
+    text-align: center !important;
+    color: red !important;
+}

@@ -6,6 +6,11 @@ meter::-webkit-meter-optimum-value {
     background: #2c43f5;
 }
 
+.apexcharts-tooltip {
+    display: block !important;
+    opacity: 1 !important;
+}
+
 
 /* meter::-webkit-meter-suboptimum-value {
     background: orange;

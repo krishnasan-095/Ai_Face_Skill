@@ -101,7 +101,7 @@
                                     </div>
 
                                     <div class="d-flex align-items-center">
-                                        <a class="text-dark hover-info mb-1 fs-16">50%</a>&nbsp;&nbsp;
+                                        <a class="text-dark hover-info mb-1 fs-16">{{overAllScore?.angry}} %</a>&nbsp;&nbsp;
                                         <meter min="10" max="100" value="50"></meter>
                                         <!-- <div class="dropdown">
                                             <a class="px-10 pt-5" href="#" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
@@ -129,7 +129,7 @@
                                     </div>
 
                                     <div class="d-flex align-items-center">
-                                        <a class="text-dark hover-info mb-1 fs-16">80%</a>&nbsp;&nbsp;
+                                        <a class="text-dark hover-info mb-1 fs-16">{{overAllScore?.disgust}} %</a>&nbsp;&nbsp;
                                         <meter min="10" max="100" value="80"></meter>
                                         <!-- <div class="dropdown">
                                             <a class="px-10 pt-5" href="#" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
@@ -157,7 +157,7 @@
                                     </div>
 
                                     <div class="d-flex align-items-center">
-                                        <a class="text-dark hover-info mb-1 fs-16">30%</a>&nbsp;&nbsp;
+                                        <a class="text-dark hover-info mb-1 fs-16">{{overAllScore?.fear}} %</a>&nbsp;&nbsp;
                                         <meter min="10" max="100" value="30"></meter>
                                         <!-- <div class="dropdown">
                                             <a class="px-10 pt-5" href="#" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
@@ -185,7 +185,7 @@
                                     </div>
 
                                     <div class="d-flex align-items-center">
-                                        <a class="text-dark hover-info mb-1 fs-16">90%</a>&nbsp;&nbsp;
+                                        <a class="text-dark hover-info mb-1 fs-16">{{overAllScore?.happy}} %</a>&nbsp;&nbsp;
                                         <meter min="10" max="100" value="90"></meter>
                                         <!-- <div class="dropdown">
                                             <a class="px-10 pt-5" href="#" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
@@ -220,7 +220,12 @@
                               </button>
                                 </div> -->
                             </div>
+                            <!-- ************************VIDEO GRAPH****************** -->
+
                             <div id="charts_widget_2_chart"></div>
+
+                            <!-- ************************VIDEO GRAPH****************** -->
+
                         </div>
                     </div>
                     <div class="row">
@@ -282,7 +287,7 @@
                                     </div>
 
                                     <div class="d-flex align-items-center">
-                                        <a class="waves-effect waves-light btn btn-sm btn-secondary"><span class="text-fade">70%</span></a>
+                                        <a class="waves-effect waves-light btn btn-sm btn-secondary"><span class="text-fade">{{overAllScore?.wristsClosed}} %</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -295,13 +300,13 @@
                                             <img src="../../assets/svg/lips.svg" class="bg-primary-light avatar avatar-lg rounded-circle" alt="">
                                         </div>
                                         <div class="d-flex flex-column fw-500">
-                                            <a class="text-dark hover-primary mb-1 fs-16">Smile Count</a>
+                                            <a class="text-dark hover-primary mb-1 fs-16">Smile</a>
                                             <!-- <span class="text-fade">5 Design Course</span> -->
                                         </div>
                                     </div>
 
                                     <div class="d-flex align-items-center">
-                                        <a class="waves-effect waves-light btn btn-sm btn-secondary"><span class="text-fade">2%</span></a>
+                                        <a class="waves-effect waves-light btn btn-sm btn-secondary"><span class="text-fade">{{overAllScore?.smileCount}} %</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -320,7 +325,7 @@
                                     </div>
 
                                     <div class="d-flex align-items-center">
-                                        <a class="waves-effect waves-light btn btn-sm btn-secondary"><span class="text-fade">23%</span></a>
+                                        <a class="waves-effect waves-light btn btn-sm btn-secondary"><span class="text-fade">{{overAllScore?.lookingStraight}} %</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -339,7 +344,7 @@
                                     </div>
 
                                     <div class="d-flex align-items-center">
-                                        <a class="waves-effect waves-light btn btn-sm btn-secondary"><span class="text-fade">95%</span></a>
+                                        <a class="waves-effect waves-light btn btn-sm btn-secondary"><span class="text-fade">{{overAllScore?.eyeContact}} %</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -353,7 +358,10 @@
                             <h3 class="box-title">Rank Top 5 Performance</h3>
                         </div>
                         <div class="box-body">
-                            <div id="performance_chart"></div>
+                            <div id="chart">
+                                <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis" [legend]="chartOptions.legend" [colors]="chartOptions.colors"
+                                    [grid]="chartOptions.grid" [tooltip]="chartOptions.tooltip"></apx-chart>
+                            </div>
                         </div>
                     </div>
                 </div>
