@@ -22,10 +22,10 @@ export const routes: Routes = [
         path: 'allVideos',
         component: AllVideosComponent
     },
-    // {
-    //     path: 'login',
-    //     component: LoginComponent
-    // },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
     // {
     //     path: 'register',
     //     component: RegisterComponent

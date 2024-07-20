@@ -23,4 +23,8 @@ export class AppComponent {
       }
     });
   }
+
+  navigate(data: any) {
+    this.router.navigate(['/' + data])
+  }
 }

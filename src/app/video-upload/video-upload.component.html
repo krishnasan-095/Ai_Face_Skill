@@ -419,12 +419,14 @@
                                             <div class="box ">
                                                 <div class="box-body w-350px ">
                                                     <h5 class="fs-18 text-center ">Good Show !</h5>
-                                                    <div id="chart" *ngIf="chartOptions?.series">
+                                                    <div id="chart" *ngIf="chartOptions?.series && MyVideoScores" style="width: 100%;
+                                                    height: 217px;
+                                                    max-width: 415px;">
                                                         <apx-chart [series]="chartOptions?.series" [chart]="chartOptions?.chart " [labels]="chartOptions?.labels " [grid]="chartOptions?.grid " [plotOptions]="chartOptions?.plotOptions " [responsive]="chartOptions?.responsive
                                                         " [colors]="chartOptions?.colors "></apx-chart>
                                                     </div>
 
-                                                    <section class="Load" *ngIf="!chartOptions?.series" style="width: 100%;
+                                                    <section class="Load" *ngIf="!chartOptions?.series || !MyVideoScores" style="width: 100%;
                                                     height: 85%;box-shadow: none !important;background: none !important;">
                                                         <div class="loader loader-1">
                                                             <div class="loader-outter"></div>
@@ -439,7 +441,7 @@
                                         <!-- /col -->
                                         <!-- col -->
                                         <div class="col-lg-4 col-md-6 pl-0 roundSection ">
-                                            <div class="box cursor-pointer " [class.selectedcategory]="selectedCategory==1" (click)="selectCategory(1) ">
+                                            <div class="box cursor-pointer " [class.selectedcategory]="selectedCategory==1 && MyVideoScores?.id" (click)="selectCategory(1) ">
                                                 <div class="box-body h-350px ">
                                                     <h5 class="fs-18 text-center ">Body Language Score</h5>
                                                     <div class="flex-wrapper-rounded ">
@@ -486,10 +488,10 @@
         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831 "
       />
       <path class="circle "
-        [attr.stroke-dasharray]="(MyVideoScores?.voiceConfidence!=null ? MyVideoScores?.voiceConfidence : minValue) + ',' + outOff"
+        [attr.stroke-dasharray]="(MyVideoScores?.speechScore!=null ? MyVideoScores?.speechScore : minValue) + ',' + outOff"
         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831 "
       />
-      <text x="18 " y="20.35 " class="percentage ">{{(MyVideoScores?.voiceConfidence!=null ? MyVideoScores?.voiceConfidence : minValue)}}%</text>
+      <text x="18 " y="20.35 " class="percentage ">{{(MyVideoScores?.speechScore!=null ? MyVideoScores?.speechScore : minValue)}}%</text>
     </svg>
 
                                                             <section class="Load" *ngIf="!MyVideoScores?.id" style="width: 100%;

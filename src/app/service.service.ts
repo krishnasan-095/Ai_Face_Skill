@@ -52,4 +52,9 @@ export class ServiceService {
     return this.http.get(this.baseUrl + '/proCommunication/getTopScore/' + userId);
   }
   // overAllScroe
+
+  login(data: any) {
+    return this.http.post(this.baseUrl + '/ProCommunication/login', data);
+  }
+
 }

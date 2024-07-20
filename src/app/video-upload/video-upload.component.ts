@@ -413,10 +413,17 @@ export class VideoUploadComponent {
     );
   };
 
-  navigate(data: any) {
+  async navigate(data: any) {
     this.selectedTab = 2
     this.router.navigate(['/Video/' + data]);
     this.dashboard = false
+    this.url = ''
+    this.chartOptions = {}
+    localStorage.removeItem('video')
+    await this.deleteForagebyKey('RecentvideoUrl')
+    localStorage.removeItem('MyVideoScores');
+    this.loadForageData()
+
   }
 
   Normalnavigate(data: any) {

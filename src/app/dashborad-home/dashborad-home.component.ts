@@ -13,6 +13,7 @@ import {
   ApexXAxis,
   NgApexchartsModule
 } from "ng-apexcharts";
+import localforage from 'localforage';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
@@ -38,78 +39,14 @@ export type ChartOptions = {
 export class DashboradHomeComponent {
 
   @ViewChild("chart") chart: ChartComponent | any;
-  public chartOptions: Partial<ChartOptions>;
+  public chartOptions: Partial<ChartOptions> | any;
 
   constructor(public router: Router, public api: ServiceService) {
-    this.chartOptions = {
-      series: [
-        {
-          name: "Scored",
-          data: [21, 22, 10, 28, 16]
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "bar",
-        events: {
-          click: function (chart: any, w: any, e: any) {
-            // console.log(chart, w, e)
-          }
-        }
-      },
-      colors: [
-        "#008FFB",
-        "#00E396",
-        "#FEB019",
-        "#FF4560",
-        "#D10CE8"
-      ],
-      plotOptions: {
-        bar: {
-          columnWidth: "45%",
-          distributed: true
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      legend: {
-        show: false
-      },
-      grid: {
-        show: false
-      },
-      xaxis: {
-        categories: [
-          ["Video", "1"],
-          ["Video", "2"],
-          ["Video", "3"],
-          ["Video", "4"],
-          ["Video", "5"]
-        ],
-        labels: {
-          style: {
-            colors: [
-              "#008FFB",
-              "#00E396",
-              "#FEB019",
-              "#FF4560",
-              "#D10CE8"
-            ],
-            fontSize: "12px"
-          }
-        }
-      },
-      tooltip: {
-        enabled: true,
-        theme: "dark",
-        y: {
-          formatter: function (val: number) {
-            return val.toString() + "%";
-          }
-        }
-      }
-    };
+
+    localStorage.removeItem('video')
+    this.deleteForagebyKey('RecentvideoUrl')
+    // this.deleteForagebyKey('MyVideoScores')
+    localStorage.removeItem('MyVideoScores');
   }
 
   userId: any
@@ -118,9 +55,22 @@ export class DashboradHomeComponent {
   TopFiveRanks: any
 
 
-  ngOnInit() {
+  async ngOnInit() {
+    localStorage.removeItem('video')
+    await this.deleteForagebyKey('RecentvideoUrl')
+    // this.deleteForagebyKey('MyVideoScores')
+    localStorage.removeItem('MyVideoScores');
+
     this.userId = localStorage.getItem('PC-UID');
     this.getAllscore()
+  }
+
+  deleteForagebyKey(data: any): Promise<any> {
+    return localforage.removeItem(data).then(function () {
+      console.log('Data has been removed 1');
+    }).catch(function (err) {
+      console.error('Error removing data: 1', err);
+    });
   }
 
   getAllscore() {
@@ -155,6 +105,80 @@ export class DashboradHomeComponent {
       next: (res => {
         console.log(res);
         this.TopFiveRanks = res;
+
+
+
+        this.chartOptions = {
+          series: [
+            {
+              name: "Scored",
+              data: [Math.round(this.TopFiveRanks[0]?.overAllScroe), Math.round(this.TopFiveRanks[1]?.overAllScroe), Math.round(this.TopFiveRanks[2]?.overAllScroe), Math.round(this.TopFiveRanks[3]?.overAllScroe), Math.round(this.TopFiveRanks[4]?.overAllScroe)]
+            }
+          ],
+          chart: {
+            height: 350,
+            type: "bar",
+            events: {
+              click: function (chart: any, w: any, e: any) {
+                // console.log(chart, w, e)
+              }
+            }
+          },
+          colors: [
+            "#008FFB",
+            "#00E396",
+            "#FEB019",
+            "#FF4560",
+            "#D10CE8"
+          ],
+          plotOptions: {
+            bar: {
+              columnWidth: "45%",
+              distributed: true
+            }
+          },
+          dataLabels: {
+            enabled: false
+          },
+          legend: {
+            show: false
+          },
+          grid: {
+            show: false
+          },
+          xaxis: {
+            categories: [
+              ["John"],
+              ["Gunal"],
+              ["Sahal"],
+              ["David"],
+              ["Deepa"]
+            ],
+            labels: {
+              style: {
+                colors: [
+                  "#008FFB",
+                  "#00E396",
+                  "#FEB019",
+                  "#FF4560",
+                  "#D10CE8"
+                ],
+                fontSize: "12px"
+              }
+            }
+          },
+          tooltip: {
+            enabled: true,
+            theme: "dark",
+            y: {
+              formatter: function (val: number) {
+                return val.toString() + "%";
+              }
+            }
+          }
+        };
+
+
         this.TopFiveVideoScore()
       }), error: (err => {
         console.log(err);
@@ -167,6 +191,9 @@ export class DashboradHomeComponent {
       next: (res => {
         console.log(res);
         this.TopFiveVideoScores = res;
+
+        console.log(this.TopFiveVideoScores[0]?.overAllScore);
+
       }), error: (err => {
         console.log(err);
       })

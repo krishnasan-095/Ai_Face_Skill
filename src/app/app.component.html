@@ -173,8 +173,8 @@
                 <div class="multinav-scroll" style="height: 97%;">
                     <!-- sidebar menu-->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li>
-                            <a href="index-2.html"><i data-feather="home"></i><span>Dashboard</span></a>
+                        <li (click)="navigate('dashboard')">
+                            <a><i data-feather="home"></i><span>Dashboard</span></a>
                         </li>
                         <li>
                             <a href="mailbox.html"><i data-feather="mail"></i><span>Mailbox</span></a>
@@ -566,7 +566,7 @@
 
     <router-outlet>
     </router-outlet>
-    <footer class="main-footer">
+    <!-- <footer class="main-footer">
         <div class="pull-right d-none d-sm-inline-block">
             <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
                 <li class="nav-item">
@@ -577,8 +577,9 @@
         &copy;
         <script>
             document.write(new Date().getFullYear())
-        </script> <a href="https://www.multipurposethemes.com/">Multipurpose Themes</a>. All Rights Reserved.
-    </footer>
+        </script>
+         <a href="https://www.multipurposethemes.com/">Multipurpose Themes</a>. All Rights Reserved.
+    </footer> -->
     <!-- Side panel -->
     <!-- quick_user_toggle -->
     <div class="modal modal-right fade" id="quick_user_toggle" tabindex="-1">
