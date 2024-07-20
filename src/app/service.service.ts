@@ -11,8 +11,11 @@ export class ServiceService {
 
   // private UserbaseUrl = 'http://192.168.1.3:8081/creedlogistics/employee';
   // private AdminbaseUrl = 'http://192.168.1.3:8081/creedlogistics';
-  private AibaseUrl = "http://192.168.29.216:5000";
-  private baseUrl = "http://192.168.29.223:8080/api";
+
+  private AibaseUrl = "http://136.185.19.60:5006";
+  private baseUrl = "http://89.116.230.242:8086/api";
+  
+
   constructor(private http: HttpClient) { }
 
   imageUpload(data: any) {

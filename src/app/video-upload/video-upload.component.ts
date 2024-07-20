@@ -133,6 +133,12 @@ export class VideoUploadComponent {
       console.log(this.MyVideoScores?.bodyLanguageScore, this.minValue);
 
       console.log(this.MyVideoScores);
+      console.log(this.recentVideoUrl);
+
+
+      if (this.MyVideoScores == null && this.recentVideoUrl != null) {
+
+      }
 
     } catch (err) {
       console.error('Error:', err);
@@ -207,7 +213,7 @@ export class VideoUploadComponent {
         "size": fileToupload.size,
         "type": fileToupload?.type,
         "videoCategory": 'null'
-      }
+      } 
       console.log(Data);
       this.selectedTab = 0;
 
