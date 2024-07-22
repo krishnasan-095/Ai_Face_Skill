@@ -11,6 +11,11 @@ import { AllVideosComponent } from './all-videos/all-videos.component';
 
 export const routes: Routes = [
     {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+    },
+    {
         path: 'dashboard',
         component: DashboradHomeComponent
     },

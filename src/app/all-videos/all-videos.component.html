@@ -2,8 +2,8 @@
     <div class="col-md-12 col-lg-4 EachCard" *ngFor="let item of allVideos">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <span><i class="fa fa-user me-2"></i> <a>Nil Yeager</a></span>
-                <span class="text-muted">Added 4 hours ago</span>
+                <span><i class="fa fa-user me-2"></i> <a>{{item.videoName.slice(1,10)}}</a></span>
+                <span class="text-muted">{{item.dateAndTime | date: 'dd-MM-YYYY , hh:mm a'}}</span>
             </div>
             <video class="card-img-top bter-0 btsr-0" src="data:video/webm;base64,{{item?.baseUrl}}"></video>
             <!-- <img class="card-img-top bter-0 btsr-0" src="data:video/webm;base64,{{item?.baseUrl}}" alt="Card image cap"> -->

@@ -3,18 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ApexPlotOptions, ApexStroke, NgApexchartsModule } from 'ng-apexcharts';
-import { ChartComponent } from 'ng-apexcharts';
 import {
   ApexNonAxisChartSeries,
   ApexResponsive,
   ApexChart,
   ApexFill,
-  ApexDataLabels,
-  ApexLegend
+  ApexDataLabels, ChartComponent,
+  ApexLegend, NgApexchartsModule
 } from 'ng-apexcharts';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import localforage from 'localforage';
 import { AppComponent } from '../app.component';
 
@@ -213,7 +210,7 @@ export class VideoUploadComponent {
         "size": fileToupload.size,
         "type": fileToupload?.type,
         "videoCategory": 'null'
-      } 
+      }
       console.log(Data);
       this.selectedTab = 0;
 
@@ -469,7 +466,7 @@ export class VideoUploadComponent {
 
   DeleteVideo() {
     this.DeleteVideoAlert = false
-    this.api.deletevideo(this.app.userId).subscribe({
+    this.api.deleteByVideoId(this.app.userId).subscribe({
       next: (res => {
         console.log(res);
         this.dashboard = false;

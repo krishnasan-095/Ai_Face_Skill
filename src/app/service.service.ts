@@ -14,7 +14,7 @@ export class ServiceService {
 
   private AibaseUrl = "http://136.185.19.60:5006";
   private baseUrl = "http://89.116.230.242:8086/api";
-  
+
 
   constructor(private http: HttpClient) { }
 
@@ -26,8 +26,12 @@ export class ServiceService {
     return this.http.post(this.baseUrl + '/ProCommunication/postvideo', data);
   }
 
-  deletevideo(id: any) {
-    return this.http.delete(this.baseUrl + '/proCommunication/deleteVideo/' + id);
+  deleteByVideoId(userId: any) {
+    return this.http.delete(this.baseUrl + '/proCommunication/deleteByVideoId/' + userId);
+  }
+
+  deleteAllVideo(id: any) {
+    return this.http.delete(this.baseUrl + '/proCommunication/deleteAllVideo/' + id);
   }
 
   getIndividualvideoDetailbyId(data: any) {

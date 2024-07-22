@@ -15,6 +15,8 @@ export class AppComponent {
   userId: any
 
   constructor(public router: Router) {
+    const Id: any = 1;
+    localStorage.setItem('PC-UID', Id)
     this.userId = localStorage.getItem('PC-UID')
     this.router.events.subscribe((event: any) => {
       if (event.constructor.name === 'NavigationEnd') {
